@@ -1,0 +1,100 @@
+<div class="detail-main">
+    <div class="header">
+        {{detail.title}}
+    </div>
+    <div class="desc">
+        <span>{{detail.createTime}}</span><span>{{detail.author}}</span>
+    </div>
+    <div class="content">
+        <div>
+            <pre>
+             <code>
+            1.node,koa安装
+            2.mongodb的安装,启动 (http://www.runoob.com/mongodb/mongodb-tutorial.html)
+            3.文档目录,创建顺序:
+             1.启动koa服务的(index.js)
+             2.使用koa-router创建一个测试路径(controller,router.js)
+             3.在测试路径中写一个测试的返回值,前端调用查看,是否成功
+             4.使用mongoose连接mongodb,在测试路径执行数据库操作(增删改查)
+             5.把之前的返回值改成mongodb数据,前端调用(model)
+            4.todo:复杂的mongodb数据操作;多个表的操作,mongoose的连接
+          </code>
+           </pre>
+        </div>
+    </div>
+    <div [innerHTML]="detail.content">
+    </div>
+    <div>
+        <pre>
+    <code>
+      title:服务端用户创建与设置
+      1.adduser hugh
+      2.gpasswd -a hugh sudo
+      3.sudo visudo==>hugh ALL:(ALL:ALL) ALL
+      4.ssh hugh@116.62.193.12
+    </code>
+    <code>
+      title:ssh免密码登录
+      1.cd .ssh / ls -a id_rsa
+
+      2.ssh-keygen -t rsa -b 4096 -C "XXX@email"(创建rsa)
+      3.eval "$(ssh-agent -s)"
+      4.ssh-add ~/.ssh/id_rsa
+      5.ssh登录服务器.生成ssh-keygen -t rsa -b 4096 -C "XXX@email"(创建rsa)
+      6.touch authorized_keys copy local id_rsa.pub to the file
+      7.sudo service ssh restart
+
+      title:iptables设置
+      sudo vi /etc/iptables.up.rules
+重启   sudo iptables-restore < /etx/iptables.up.rules
+    </code>
+  </pre>
+        <pre>
+    <code>
+      19.2.11;
+      title:服务端mongodb操作
+      iptable操作:sudo vi /etc/iptables.up.rules
+      修改默认端口
+      1.启动mongodb: sudo service mongod start
+      2.链接mongodb服务:mongo --port 23333
+      3.操作命令
+    </code>
+  </pre>
+        <pre>
+    <code>
+        19.2.11;
+        title:服务端nginx配置
+        1.位置 etc/nginx
+    </code>
+  </pre>
+        <pre>
+      <code>
+          19.2.11;
+          title:npx是什么
+          https://www.jianshu.com/p/cee806439865;
+      </code>
+    </pre>
+        <pre>
+      <code>
+        19.2.12;
+        title:sourcemap是什么
+      </code>
+    </pre>
+        <pre>
+      <code>
+          19.2.12;
+          title:github deploy-key ssh-key
+          1.https://www.jianshu.com/p/59bf0cb3dd43
+          2.key in use http://www.it1352.com/801056.html
+          3.https://segmentfault.com/q/1010000007356879?_ea=1319674
+      </code>
+    </pre>
+        <pre>
+  <code>
+    19.2.12;
+    title:koa+mongoose遇到502的问题缘由及解决办法;
+
+  </code>
+</pre>
+    </div>
+</div>

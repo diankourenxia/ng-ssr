@@ -1,0 +1,22 @@
+{
+    "/api": {
+        "target": "http://127.0.0.1:3100",
+        "secure": false
+    },
+    "/page": {
+        "target": "http://192.168.2.116:9091",
+        "secure": false
+    },
+    "/loan_platform_tag": {
+        "target": "http://192.168.2.116:9091",
+        "secure": false
+    },
+    "/loan_platform": {
+        "target": "http://192.168.2.116:9091",
+        "secure": false
+    },
+    "/diversion": {
+        "target": "http://192.168.2.120:9099",
+        "secure": false
+    }
+}
