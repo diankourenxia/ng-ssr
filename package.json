@@ -11,7 +11,7 @@
         "build_git": "ng build --prod --base-href 'https://diankourenxia.github.io/ng-pwa/'",
         "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
         "serve:ssr": "node dist/server.js",
-        "build:client-and-server-bundles": "npm run build_git && ng run ng-pwa:server",
+        "build:client-and-server-bundles": "ng build --prod && ng run ng-pwa:server",
         "webpack:server": "webpack --mode development --config webpack.server.config.js --progress --colors"
     },
     "private": true,
