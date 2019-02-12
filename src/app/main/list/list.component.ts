@@ -145,8 +145,14 @@ export class ListComponent implements OnInit {
       categorys: ['服务器', 'ssh', 'nodejs']
     },
     {
-      title: '在服务器上搭建koa+mongodb服务',
-      content: '远程服务器的登录ssh,创建访问用户,启动服务,绑定域名,使用域名访问',
+      title: '查看服务器内存',
+      content: '问题:服务器连接不上',
+      linkList: [
+        {
+          title: 'linux服务器内存',
+          url: 'https://blog.csdn.net/qq_41685990/article/details/82734096'
+        }
+      ],
       author: 'hugh',
       createTime: '2019.2.12',
       categorys: ['服务器', 'ssh', 'nodejs']
