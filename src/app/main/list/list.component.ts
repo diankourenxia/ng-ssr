@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
     {
       content: '网站seo',
       createTime: '2019.4.7',
-      status: 'todo'
+      status: 'done'
     },
     {
       content: 'nest',
@@ -40,12 +40,12 @@ export class ListComponent implements OnInit {
     {
       content: 'mongodb在服务端的查看',
       createTime: '2019.4.7',
-      status: 'todo'
+      status: 'done'
     },
     {
       content: '服务端渲染实现',
       createTime: '2019.2.11',
-      status: 'todo',
+      status: 'done',
       didUrl: null
     },
     {
@@ -54,9 +54,14 @@ export class ListComponent implements OnInit {
       status: 'todo'
     },
     {
-      content: 'node版本更新后别的命令不能用',
-      createTime: '2019.2.11',
-      status: 'done'
+      content: '负载均衡的理解',
+      createTime: '2019.2.13',
+      status: 'todo'
+    },
+    {
+      content: 'rem理解',
+      createTime: '2019.2.13',
+      status: 'todo'
     }
   ];
   didList = [

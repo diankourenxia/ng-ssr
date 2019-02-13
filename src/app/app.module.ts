@@ -5,18 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
 
-const appRouter: Routes = [{
-  path: '', redirectTo: '/main', pathMatch: 'full'
-}, {
-  path: 'main', loadChildren: './main/main.module#MainModule'
-}, {
-  path: 'login', component: LoginComponent
-}];
+registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,11 +24,12 @@ const appRouter: Routes = [{
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRouter),
     BrowserModule.withServerTransition({appId: 'my-app'}),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    NgZorroAntdModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

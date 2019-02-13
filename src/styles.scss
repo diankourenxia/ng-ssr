@@ -2,10 +2,32 @@
 
 body,
 html,
-h1 {
+h1,
+input {
     margin: 0;
     padding: 0;
 }
+
+input {
+    border: 1px solid gray;
+    max-height: 40px;
+    max-width: 180px;
+    padding-left: 10%;
+    &::-webkit-input-placeholder {
+        padding-left: 10%;
+    }
+    &:-moz-placeholder {
+        padding-left: 10%;
+    }
+    &::-moz-placeholder {
+        padding-left: 10%;
+    }
+    &:-ms-input-placeholder {
+        padding-left: 10%;
+    }
+}
+
+button {}
 
 a,
 ul li {
