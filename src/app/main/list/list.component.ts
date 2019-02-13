@@ -35,7 +35,7 @@ export class ListComponent implements OnInit {
     {
       content: 'pm2的使用,查看数据',
       createTime: '2019.4.7',
-      status: 'todo'
+      status: 'done'
     },
     {
       content: 'mongodb在服务端的查看',
@@ -56,7 +56,7 @@ export class ListComponent implements OnInit {
     {
       content: 'node版本更新后别的命令不能用',
       createTime: '2019.2.11',
-      status: 'todo'
+      status: 'done'
     }
   ];
   didList = [
@@ -155,14 +155,14 @@ export class ListComponent implements OnInit {
       ],
       author: 'hugh',
       createTime: '2019.2.12',
-      categorys: ['服务器', 'ssh', 'nodejs']
+      categorys: ['服务器', 'ssh']
     },
     {
-      title: '在服务器上搭建koa+mongodb服务',
-      content: '远程服务器的登录ssh,创建访问用户,启动服务,绑定域名,使用域名访问',
+      title: 'git深入使用',
+      content: '深入学习git知识',
       author: 'hugh',
       createTime: '2019.2.12',
-      categorys: ['服务器', 'ssh', 'nodejs']
+      categorys: ['git']
     }
   ];
   baseInfo = baseInfo;
