@@ -21,7 +21,7 @@
             "env": {
                 "NODE_ENV": "production"
             },
-            "post-deploy": "pm2 startOrRestart ecosystem.json --env production"
+            "post-deploy": "npm run webpack:server&&pm2 startOrRestart ecosystem.json --env production"
         }
     }
 }
