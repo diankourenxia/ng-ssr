@@ -4,9 +4,14 @@ import { LoginComponent } from './login/login.component';
 
 const appRouter: Routes = [{
   path: '', redirectTo: '/main', pathMatch: 'full'
-}, {
+},
+{
   path: 'main', loadChildren: './main/main.module#MainModule'
-}, {
+},
+{
+  path: 'input', loadChildren: './input/input.module#InputModule'
+},
+{
   path: 'login', component: LoginComponent
 }];
 @NgModule({

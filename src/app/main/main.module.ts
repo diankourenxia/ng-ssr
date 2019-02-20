@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { PreCodeComponent } from '../components/pre-code/pre-code.component';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
-
 const mainRoutes: Routes = [
   {
     path: 'detail', component: DetailComponent

@@ -59,6 +59,11 @@ export class ListComponent implements OnInit {
       status: 'todo'
     },
     {
+      content: 'ng路由复用',
+      createTime: '2019.2.13',
+      status: 'todo'
+    },
+    {
       content: 'rem理解',
       createTime: '2019.2.13',
       status: 'todo'
@@ -78,7 +83,7 @@ export class ListComponent implements OnInit {
           des: 'xxx'
         }
       ],
-      categorys: ['koa', 'mongodb', 'mongoose'],
+      tags: ['koa', 'mongodb', 'mongoose'],
       contentList: [
         {
           content: '',
@@ -105,7 +110,7 @@ export class ListComponent implements OnInit {
       content: '远程服务器的登录ssh,创建访问用户,启动服务,绑定域名,使用域名访问',
       author: 'hugh',
       createTime: '2019.2.12',
-      categorys: ['服务器', 'ssh', 'nodejs']
+      tags: ['服务器', 'ssh', 'nodejs']
     },
     {
       title: 'koa服务端调试502',
@@ -119,7 +124,7 @@ export class ListComponent implements OnInit {
         }
       ],
       createTime: '2019.2.12',
-      categorys: ['问题手册']
+      tags: ['问题手册']
     },
     {
       title: 'git stash使用',
@@ -133,7 +138,7 @@ export class ListComponent implements OnInit {
         }
       ],
       createTime: '2019.2.12',
-      categorys: ['服务器', 'ssh', 'nodejs']
+      tags: ['服务器', 'ssh', 'nodejs']
     },
     {
       title: 'pm2日志服务',
@@ -147,7 +152,7 @@ export class ListComponent implements OnInit {
       ],
       author: 'hugh',
       createTime: '2019.2.12',
-      categorys: ['服务器', 'ssh', 'nodejs']
+      tags: ['服务器', 'ssh', 'nodejs']
     },
     {
       title: '查看服务器内存',
@@ -160,14 +165,24 @@ export class ListComponent implements OnInit {
       ],
       author: 'hugh',
       createTime: '2019.2.12',
-      categorys: ['服务器', 'ssh']
+      tags: ['服务器', 'ssh']
     },
     {
       title: 'git深入使用',
       content: '深入学习git知识',
       author: 'hugh',
       createTime: '2019.2.12',
-      categorys: ['git']
+      tags: ['git']
+    },
+    {
+      title: '富文本编辑器:tinymce',
+      content: '',
+      tags: ['工具', 'angular'],
+      linkList: [
+        {
+          url: 'https://www.tiny.cloud/docs/integrations/angular2/'
+        }
+      ]
     }
   ];
   baseInfo = baseInfo;

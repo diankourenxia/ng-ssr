@@ -11,7 +11,7 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-
+import { EditorModule } from '@tinymce/tinymce-angular';
 registerLocaleData(en);
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ registerLocaleData(en);
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    EditorModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule.withServerTransition({appId: 'my-app'}),
