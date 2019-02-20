@@ -1,5 +1,5 @@
 <div class="edit-main">
-    <form #editForm="ngForm" (submit)="submitEdit(1)">
+    <form #editForm="ngForm" (submit)="submitEdit()">
         <div class="form-group">
             <label for="title"></label>
             <input type="text" class="form-control" id="title" required [(ngModel)]="editData.title" name="title" placeholder="title">
