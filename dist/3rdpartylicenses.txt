@@ -299,9 +299,6 @@ MIT
 @angular/router
 MIT
 
-@angular/forms
-MIT
-
 @tinymce/tinymce-angular
 Apache-2.0
 
@@ -309,6 +306,9 @@ Apache-2.0
 MIT
 
 @angular/service-worker
+MIT
+
+@angular/forms
 MIT
 
 @angular/core
