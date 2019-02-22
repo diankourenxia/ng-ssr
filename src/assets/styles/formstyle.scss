@@ -1,0 +1,9 @@
+.form-group {
+    margin-top: 20px;
+    & input {
+        min-width: 80px;
+        min-height: 36px;
+        margin: 10px;
+        box-shadow: 2px 2px 1px #c3a8a8;
+    }
+}

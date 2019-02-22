@@ -13,3 +13,11 @@
     overflow-y: scroll;
     float: right;
 }
+
+.main-door {
+    .door {
+        float: left;
+        width: 50%;
+        height: 50vh;
+    }
+}

@@ -5,16 +5,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { PreCodeComponent } from '../components/pre-code/pre-code.component';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
+import { DoorComponent } from './door/door.component';
 const mainRoutes: Routes = [
   {
-    path: 'detail', component: DetailComponent
+    path: 'detail/:title', component: DetailComponent, data: { title: 'detail' }
   },
   {
-    path: '', component: ListComponent
+    path: 'list', component: ListComponent, data: { title: 'list' }
+  },
+  {
+    path: 'life', component: DetailComponent, data: { title: 'life' }
+  },
+  {
+    path: '', component: DoorComponent, data: { title: 'door' }
   }
 ];
 @NgModule({
-  declarations: [MainComponent, PreCodeComponent, ListComponent, DetailComponent],
+  declarations: [MainComponent, PreCodeComponent, ListComponent, DetailComponent, DoorComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(mainRoutes)

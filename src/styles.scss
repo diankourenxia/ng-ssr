@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import './src/assets/styles/formstyle.scss';
 body,
 html,
 h1,
@@ -10,8 +11,9 @@ input {
 
 input {
     border: 1px solid gray;
+    border-radius: 5px;
     max-height: 40px;
-    padding-left: 10%;
+    padding-left: 5%;
     &::-webkit-input-placeholder {
         padding-left: 10%;
     }

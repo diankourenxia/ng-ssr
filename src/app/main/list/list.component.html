@@ -14,9 +14,9 @@
                 <span class="time">{{item.createTime}}</span>
                 <span class="author">{{item.author}}</span>
             </div>
-            <div class="content">{{item.content}}</div>
+            <div class="content">{{item.desc}}</div>
             <div class="more">
-                <a routerLink="/main/detail">继续阅读 >></a> </div>
+                <a [routerLink]="['/main/detail', item.title]">继续阅读 >></a> </div>
         </div>
     </div>
     <div class="todo list-container">

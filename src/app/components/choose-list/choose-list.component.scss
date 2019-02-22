@@ -1,0 +1,21 @@
+.choose-list-main {
+    border: 1px dotted black;
+    padding: 10px 20px;
+    display: inline-block;
+    .item {
+        padding: 5px 10px;
+        margin: 5px 20px;
+        cursor: pointer;
+        box-shadow: 1px 1px 1px #e2d6d6;
+        background: #babdbfcf;
+        border-radius: 5px;
+        color: white;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        user-select: none;
+        display: inline-block;
+        &.choosed {
+            background: red;
+        }
+    }
+}

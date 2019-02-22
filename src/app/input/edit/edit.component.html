@@ -6,18 +6,24 @@
         </div>
         <div class="form-group">
             <label for="des"></label>
-            <input type="text" class="form-control" id="des" required [(ngModel)]="editData.des" name="des" placeholder="描述">
+            <input type="text" class="form-control" id="des" required [(ngModel)]="editData.desc" name="des" placeholder="描述">
         </div>
         <div class="form-group">
             <label for="author"></label>
             <input type="text" class="form-control" id="author" required [(ngModel)]="editData.author" name="author" placeholder="作者">
         </div>
         <div class="form-group">
-            <div>
-                <editor apiKey=ptnnw15px4ils3sllw1sv54m6kl6flak2mdocfj72k0jv9w2 [init]=editParam [(ngModel)]="editData.content"></editor>
-            </div>
+            <app-choose-list [list]=categoryList [title]="'类别'" #catChoose></app-choose-list>
         </div>
-        <button type="submit" class="btn btn-success btn-submit" [disabled]="!editForm.form.valid">登录</button>
+        <div class="form-group">
+            <app-choose-list [list]=tagList [title]="'标签'" #tagChoose></app-choose-list>
+        </div>
+        <div class="form-group" style="padding:20px 20px;">
+
+            <editor [init]=editParam [(ngModel)]="editData.content" name="content"></editor>
+
+        </div>
+        <button type="submit" class="btn btn-success btn-submit" [disabled]="!editForm.form.valid">提交</button>
     </form>
 
 </div>

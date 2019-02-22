@@ -5,14 +5,14 @@ import { InputComponent } from './input.component';
 import { EditComponent } from './edit/edit.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
-
+import { ChooseListComponent } from '../components/choose-list/choose-list.component';
 const Route: Routes = [
   {
     path: 'edit', component: EditComponent
   }
 ];
 @NgModule({
-  declarations: [InputComponent, EditComponent],
+  declarations: [InputComponent, EditComponent, ChooseListComponent],
   imports: [
     CommonModule,
     EditorModule,
