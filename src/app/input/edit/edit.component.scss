@@ -1,0 +1,26 @@
+.lang-input {
+    width: 80%;
+    max-width: 266px;
+}
+
+.editor-container {
+    position: relative;
+    .editor-part {
+        height: 400px;
+        width: 50%;
+        margin-left: 10px;
+    }
+    .editor-show {
+        width: 45%;
+        position: absolute;
+        // margin-left: 20px;
+        // box-sizing: border-box;
+        top: 0;
+        right: 5px;
+        border: 3px dotted #009688;
+        ;
+        height: 400px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}

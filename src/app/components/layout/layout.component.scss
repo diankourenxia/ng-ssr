@@ -1,0 +1,42 @@
+    $headerHeight: 60px;
+    $leftMenuWidth: 60px;
+    .layout-main {
+        height: 100vh;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        .header {
+            height: $headerHeight;
+            width: 100%;
+            position: relative;
+            .name {
+                position: absolute;
+            }
+            .nav-container {
+                width: 60%;
+                position: absolute;
+                height: 100%;
+                line-height: $headerHeight;
+                right: 0;
+                a {
+                    display: inline-block;
+                    width: 30px;
+                    height: 100%;
+                }
+            }
+        }
+        .left-menu {
+            height: 100vh;
+            width: $leftMenuWidth;
+            position: absolute;
+            left: 0;
+        }
+        .body {
+            padding-left: $leftMenuWidth;
+            width: 100%;
+            // display: inline-block;
+            height: 100vh;
+            padding-top: $headerHeight;
+            box-sizing: border-box;
+        }
+    }

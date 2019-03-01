@@ -18,6 +18,7 @@ export class ChooseListComponent implements OnInit, AfterViewInit {
     this.choosedList = [];
   }
   ngAfterViewInit() {
+    Object.assign(this, { choosedList: [] });
     const item = document.getElementsByClassName('item');
     console.log(item);
     fromEvent(item, 'click').pipe(

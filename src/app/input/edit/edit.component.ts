@@ -12,7 +12,7 @@ export class EditComponent implements OnInit, AfterViewInit {
   @ViewChildren('catChoose') catChoose: QueryList<any>;
   @ViewChildren('tagChoose') tagChoose: QueryList<any>;
   editData: DidItem = {
-    author: null,
+    author: 'hugh',
     title: null,
     desc: '',
     content: '',
@@ -29,21 +29,21 @@ export class EditComponent implements OnInit, AfterViewInit {
     {
       desc: '工具',
       val: 'tool',
-      isChoosed: false
     }, {
       desc: '生活记录',
       val: 'life',
-      isChoosed: false
     },
     {
       desc: 'todo',
       val: 'todo',
-      isChoosed: false
     },
     {
       desc: 'did',
       val: 'did',
-      isChoosed: false
+    },
+    {
+      desc: '基础',
+      val: 'base',
     }
   ];
   tagList = [
@@ -52,6 +52,8 @@ export class EditComponent implements OnInit, AfterViewInit {
   editParam = {
     selector: 'textarea',
     plugins: 'codesample',
+    language: 'zh_CN',
+    height: 400,
     codesample_languages: [
       { text: 'HTML/XML', value: 'markup' },
       { text: 'JavaScript', value: 'javascript' },
@@ -73,8 +75,13 @@ export class EditComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
   }
   submitEdit() {
-    console.log(this.catChoose);
-    console.log(this.tagChoose);
+    this.tagChoose.first.choosedList.forEach(item => {
+      if (this.tagList.includes(item)) {
+        this.editData.tags.push(item);
+      } else {
+        this.editData.categories.push(item);
+      }
+    });
     this.http.post('/api/article/add',
       this.editData).subscribe(
         res => {

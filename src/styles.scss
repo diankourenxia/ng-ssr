@@ -13,22 +13,45 @@ input {
     border: 1px solid gray;
     border-radius: 5px;
     max-height: 40px;
-    padding-left: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
     &::-webkit-input-placeholder {
-        padding-left: 10%;
+        padding-left: 2%;
     }
     &:-moz-placeholder {
-        padding-left: 10%;
+        padding-left: 2%;
     }
     &::-moz-placeholder {
-        padding-left: 10%;
+        padding-left: 2%;
     }
     &:-ms-input-placeholder {
-        padding-left: 10%;
+        padding-left: 2%;
     }
 }
 
-button {}
+button {
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    border-radius: 10px;
+    &.btn {
+        background: white;
+        color: black;
+        &-success {
+            color: white;
+            background: red;
+        }
+        &-disable {
+            background: gray;
+        }
+        &-enbale {
+            background: greenyellow;
+        }
+    }
+}
 
 a,
 ul li {

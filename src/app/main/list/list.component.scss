@@ -1,6 +1,6 @@
 $left-width-percent: 60%;
 .header {
-    position: fixed;
+    // position: fixed;
     /* height: 40px; */
     height: 10vh;
     line-height: 10vh;
@@ -8,8 +8,9 @@ $left-width-percent: 60%;
     text-align: center;
     background: white;
     z-index: 9999;
+    float: left;
     &.did {
-        border-right: 1px solid #9dd6f7;
+        // border-right: 1px solid #9dd6f7;
         box-shadow: -2px 5px 9px 1px #86c1e2 inset;
         left: 0;
         width: $left-width-percent;
@@ -29,7 +30,7 @@ $left-width-percent: 60%;
     float: left;
     box-sizing: border-box;
     position: relative;
-    margin-top: 10vh;
+    // margin-top: 10vh;
     padding-top: 30px;
     .header {
         text-align: center;
