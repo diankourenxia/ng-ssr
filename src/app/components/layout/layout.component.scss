@@ -1,5 +1,5 @@
-    $headerHeight: 60px;
-    $leftMenuWidth: 60px;
+    $headerHeight: 80px;
+    $leftMenuWidth: 0;
     .layout-main {
         height: 100vh;
         width: 100%;
@@ -11,6 +11,11 @@
             position: relative;
             .name {
                 position: absolute;
+                height: 100%;
+                left: 10px;
+                line-height: $headerHeight;
+                font-size: 20px;
+                font-family: KaiTi;
             }
             .nav-container {
                 width: 60%;
@@ -18,10 +23,18 @@
                 height: 100%;
                 line-height: $headerHeight;
                 right: 0;
+                display: flex;
+                justify-content: center;
                 a {
-                    display: inline-block;
-                    width: 30px;
+                    flex: 1;
+                    max-width: 80px;
                     height: 100%;
+                    font-size: 20px;
+                    letter-spacing: 5px;
+                    color: black;
+                    &:hover {
+                        color: rgb(233, 127, 127);
+                    }
                 }
             }
         }
@@ -30,6 +43,13 @@
             width: $leftMenuWidth;
             position: absolute;
             left: 0;
+            .head-img {
+                width: 100%;
+                display: inline-block;
+                img {
+                    width: 100%;
+                }
+            }
         }
         .body {
             padding-left: $leftMenuWidth;

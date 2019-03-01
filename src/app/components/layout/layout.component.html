@@ -1,13 +1,15 @@
 <div class="layout-main">
     <div class="header">
         <div class="name">
-            fasdfadfafa
+            hugh's blog
         </div>
         <div class="nav-container">
             <a [routerLink]="[ item.url ]" *ngFor="let item of navList">{{item.desc}}</a>
         </div>
         <div class="left-menu">
-
+            <div class="head-img">
+                <img src="../../../assets/img/header.jpeg">
+            </div>
         </div>
         <div class="body">
             <ng-content></ng-content>
