@@ -2,11 +2,12 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { DidItem, LinkItem } from '../../interface/article';
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChooseListComponent } from '../../components/choose-list/choose-list.component';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  styleUrls: ['./edit.component.scss', '../../../assets/styles/3dbutton.scss']
 })
 export class EditComponent implements OnInit, AfterViewInit {
   @ViewChildren('catChoose') catChoose: QueryList<any>;
@@ -51,8 +52,12 @@ export class EditComponent implements OnInit, AfterViewInit {
   ];
   editParam = {
     selector: 'textarea',
-    plugins: 'codesample',
+    plugins: 'link lists image code table colorpicker textcolor wordcount contextmenu',
+    language_url: '../../../assets/tinymce/langs/zh_CN.js',
     language: 'zh_CN',
+    toolbar: 'bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft'
+      + ' aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo '
+      + '| link unlink image code | removeformat | codesample',
     height: 400,
     codesample_languages: [
       { text: 'HTML/XML', value: 'markup' },
@@ -65,10 +70,9 @@ export class EditComponent implements OnInit, AfterViewInit {
       { text: 'C', value: 'c' },
       { text: 'C#', value: 'csharp' },
       { text: 'C++', value: 'cpp' }
-    ],
-    toolbar: 'codesample'
+    ]
   };
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
@@ -85,6 +89,7 @@ export class EditComponent implements OnInit, AfterViewInit {
     this.http.post('/api/article/add',
       this.editData).subscribe(
         res => {
+          this.router.navigate(['/main/list']);
           console.log(res);
         });
   }
