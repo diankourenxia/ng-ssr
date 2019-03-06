@@ -89,8 +89,10 @@ export class EditComponent implements OnInit, AfterViewInit {
     this.http.post('/api/article/add',
       this.editData).subscribe(
         res => {
-          this.router.navigate(['/main/list']);
-          console.log(res);
+          if (res['success']) {
+            this.router.navigate(['/main/list']);
+            console.log(res);
+          }
         });
   }
   chooseTag(item) {
