@@ -3,7 +3,7 @@
     margin: auto;
     height: 100vh;
     box-sizing: border-box;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
     overflow-y: scroll;
     overflow-x: hidden;
     .header {
@@ -20,7 +20,8 @@
         }
     }
     .content {
-        width: 80%;
+        width: 90%;
         max-width: 666px;
+        margin: auto;
     }
 }
