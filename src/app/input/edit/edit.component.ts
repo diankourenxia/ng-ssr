@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { DidItem, LinkItem } from '../../interface/article';
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ChooseListComponent } from '../../components/choose-list/choose-list.component';
 @Component({
@@ -21,6 +22,7 @@ export class EditComponent implements OnInit, AfterViewInit {
     categories: [],
     linkList: [],
   };
+  detail;
   categoryList = [
     {
       desc: '问题',
@@ -72,9 +74,19 @@ export class EditComponent implements OnInit, AfterViewInit {
       { text: 'C++', value: 'cpp' }
     ]
   };
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    if (this.route.paramMap.source['value']) {
+    this.http.get('/api/article/get?title=' + this.route.paramMap.source['value']['title']).subscribe(res => {
+      console.log(res);
+      this.detail = res['data'][0];
+      Object.assign(this.editData, this.detail);
+      console.log(this.editData);
+      // this.detail = res;
+    });
+    }
+
   }
   ngAfterViewInit() {
   }

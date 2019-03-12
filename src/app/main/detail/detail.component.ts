@@ -36,5 +36,9 @@ export class DetailComponent implements OnInit {
     // })
 
   }
+  edit() {
+    console.log(1);
+    this.router.navigate(['/input/edit', this.detail.title]);
+  }
 
 }

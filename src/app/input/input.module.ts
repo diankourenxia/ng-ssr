@@ -8,7 +8,7 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { ChooseListComponent } from '../components/choose-list/choose-list.component';
 const Route: Routes = [
   {
-    path: 'edit', component: EditComponent
+    path: 'edit/:title', component: EditComponent
   }
 ];
 @NgModule({
