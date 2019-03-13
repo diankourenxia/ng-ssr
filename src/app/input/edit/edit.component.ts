@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { DidItem, LinkItem } from '../../interface/article';
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChooseListComponent } from '../../components/choose-list/choose-list.component';
 @Component({
   selector: 'app-edit',
@@ -78,13 +77,13 @@ export class EditComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     if (this.route.paramMap.source['value']) {
-    this.http.get('/api/article/get?title=' + this.route.paramMap.source['value']['title']).subscribe(res => {
-      console.log(res);
-      this.detail = res['data'][0];
-      Object.assign(this.editData, this.detail);
-      console.log(this.editData);
-      // this.detail = res;
-    });
+      this.http.get('/api/article/get?title=' + this.route.paramMap.source['value']['title']).subscribe(res => {
+        console.log(res);
+        this.detail = res['data'][0];
+        Object.assign(this.editData, this.detail);
+        this.tagChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
+        // this.detail = res;
+      });
     }
 
   }
@@ -98,14 +97,24 @@ export class EditComponent implements OnInit, AfterViewInit {
         this.editData.categories.push(item);
       }
     });
-    this.http.post('/api/article/add',
-      this.editData).subscribe(
-        res => {
-          if (res['success']) {
-            this.router.navigate(['/main/list']);
-            console.log(res);
-          }
-        });
+    if (this.editData['_id']) {
+      this.http.post('/api/article/update',
+        this.editData).subscribe(
+          res => {
+            if (res['success']) {
+              this.router.navigate(['/main/list']);
+            }
+          });
+    } else {
+      this.http.post('/api/article/add',
+        this.editData).subscribe(
+          res => {
+            if (res['success']) {
+              this.router.navigate(['/main/list']);
+            }
+          });
+    }
+
   }
   chooseTag(item) {
     item.isChoosed = !item.isChoosed;

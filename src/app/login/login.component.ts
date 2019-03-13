@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
     password: null,
     email: null
   };
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -25,7 +26,9 @@ export class LoginComponent implements OnInit {
     this.http.post('/api/admin/login',
       this.loginData).subscribe(
         res => {
-          console.log(res);
+          if (res['success']) {
+            this.router.navigate(['/main/list']);
+          }
         });
   }
   register(val) {
@@ -36,7 +39,9 @@ export class LoginComponent implements OnInit {
     this.http.post('/api/admin/register',
       this.registerData, { headers }).subscribe(
         res => {
-          console.log(res);
+          if (res['success']) {
+            this.router.navigate(['/main/list']);
+          }
         });
   }
 
