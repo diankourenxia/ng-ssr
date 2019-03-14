@@ -4,13 +4,39 @@ import { map, filter } from 'rxjs/operators';
 import { debounceTime } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('openClose', [
+      state('open', style({
+        right: '0',
+        opacity: 1
+      })),
+      state('closed', style({
+        right: '-40%',
+        opacity: 0.5
+            })),
+      transition('open => closed', [
+        animate('0.5s')
+      ]),
+      transition('closed => open', [
+        animate('0.5s')
+      ]),
+    ]),
+  ]
 })
 export class AppComponent implements OnInit {
   title = 'ng-pwa';
+  isOpen = false;
   constructor(titleServe: Title, private router: Router, private activatedRoute: ActivatedRoute) {
   }
   ngOnInit() {
@@ -27,6 +53,9 @@ export class AppComponent implements OnInit {
     //   .subscribe((event) => {
     //     this.getCalSize();
     //     });
+  }
+  openClose() {
+    this.isOpen = !this.isOpen;
   }
   getCalSize() {
     // const calSize = document.documentElement.clientWidth / 640 * 100;

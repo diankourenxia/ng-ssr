@@ -1,2 +1,8 @@
 <router-outlet>
 </router-outlet>
+<div class="light-container" [@openClose]="isOpen ? 'open' : 'closed'">
+    <div class="tab" (click)="openClose()">
+        {{isOpen?'收缩':'展开'}}
+    </div>
+    <h1>闪现</h1>
+</div>

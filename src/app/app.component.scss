@@ -1,0 +1,20 @@
+.light-container {
+    position: absolute;
+    height: 100vh;
+    right: 0;
+    width: 40%;
+    background: white;
+    box-shadow: -7px 0px 18px 1px #ccc;
+    top: 0;
+    .tab {
+        position: absolute;
+        top: 0;
+        left: -40px;
+        height: 30px;
+        width: 40px;
+        line-height: 30px;
+        text-align: center;
+        background: gray;
+        cursor: pointer;
+    }
+}
