@@ -9,6 +9,9 @@ import { ChooseListComponent } from '../components/choose-list/choose-list.compo
 const Route: Routes = [
   {
     path: 'edit/:title', component: EditComponent
+  },
+  {
+    path: 'edit', component: EditComponent
   }
 ];
 @NgModule({
