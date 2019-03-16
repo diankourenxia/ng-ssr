@@ -76,7 +76,7 @@ export class EditComponent implements OnInit, AfterViewInit {
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    if (this.route.paramMap.source['value']) {
+    if (this.route.paramMap.source['value']['title']) {
       this.http.get('/api/article/get?title=' + this.route.paramMap.source['value']['title']).subscribe(res => {
         console.log(res);
         this.detail = res['data'][0];
