@@ -16,7 +16,6 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.http.get('/api/article/list').subscribe((val) => {
-      console.log(val);
       this.didList = val['data'];
     });
     // this.http.get('/api/todo/list').subscribe((val) => {

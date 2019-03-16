@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { fromEvent, pipe } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { debounceTime } from 'rxjs/operators';
@@ -11,6 +11,12 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { HttpClient } from '@angular/common/http';
+interface FlashSchema {
+  content: String;
+  status?: String;
+  type: String;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,20 +30,69 @@ import {
       state('closed', style({
         right: '-40%',
         opacity: 0.5
-            })),
+      })),
       transition('open => closed', [
-        animate('0.5s')
+        animate('0.35s')
       ]),
       transition('closed => open', [
-        animate('0.5s')
+        animate('0.35s')
       ]),
     ]),
+    trigger('activeTag', [
+      state('true', style({
+        'z-index': 1000,
+        'box-shadow': 'rgba(93, 130, 173, 0.45) 4px -2px 6px 1px inset'
+      })),
+      state('false', style({
+        'z-index': 998
+      })),
+      transition('true => false', [
+        animate('0.2s')
+      ]),
+      transition('false => true', [
+        animate('0.2s')
+      ]),
+    ]),
+    trigger('activeContent', [
+      transition(':enter', [
+        style({ 'transform': 'translateY(-100%)' }),
+        animate('0.5s', style({ 'transform': 'translateY(0)' })),
+      ]),
+      transition(':leave', [
+        style({ 'transform': 'translateY(0)' }),
+        animate('0.5s', style({ 'transform': 'translateY(100%)' }))
+      ])
+    ])
   ]
+
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'ng-pwa';
   isOpen = false;
-  constructor(titleServe: Title, private router: Router, private activatedRoute: ActivatedRoute) {
+  flashWidth = '-40%';
+  flashTypeList = [
+    {
+      title: '待办',
+      isActive: false,
+      contentPosition: 'next',
+      type: 'todo'
+    },
+    {
+      title: '待学',
+      isActive: false,
+      contentPosition: 'next',
+      type: 'tostudy'
+    }
+  ];
+  flashList = [];
+  flashData: FlashSchema = {
+    content: '',
+    type: 'todo'
+  };
+  @ViewChild('flash')
+  flashEl: ElementRef;
+  constructor(titleServe: Title, private router: Router, private activatedRoute: ActivatedRoute,
+    private http: HttpClient) {
   }
   ngOnInit() {
     this.router.events
@@ -54,12 +109,49 @@ export class AppComponent implements OnInit {
     //     this.getCalSize();
     //     });
   }
-  openClose() {
-    this.isOpen = !this.isOpen;
+  openClose(item) {
+    if (this.isOpen && item.isActive) {
+      this.isOpen = !this.isOpen;
+      item.isActive = false;
+    } else {
+      this.flashData.type = item.type;
+      this.getFlashList(item.type);
+      this.isOpen = true;
+      item.isActive = 'false';
+      item.contentPosition = 'on';
+      this.flashTypeList.filter(items => {
+        return items.title !== item.title;
+      }).forEach(itemss => {
+        itemss.isActive = false;
+        itemss.contentPosition = 'next';
+      });
+    }
   }
   getCalSize() {
     // const calSize = document.documentElement.clientWidth / 640 * 100;
     // console.log(calSize);
     // document.documentElement.style.fontSize = calSize > 60 ? '60px' : calSize + 'px';
+  }
+  getFlashList(type) {
+    this.http.post('/api/flash/list', { type: type }).subscribe((val) => {
+      this.flashList = val['data'];
+    });
+  }
+  onSubmit() {
+    if (this.flashData.content) {
+      this.http.post('/api/flash/add',
+        this.flashData).subscribe(
+          res => {
+            if (res['success']) {
+              this.flashData.content = '';
+              this.getFlashList(this.flashData.type);
+            }
+          });
+    } else {
+      console.log(111);
+    }
+  }
+  ngAfterViewInit() {
+    console.log(this.flashEl);
   }
 }
