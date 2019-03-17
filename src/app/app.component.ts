@@ -145,6 +145,8 @@ export class AppComponent implements OnInit, AfterViewInit {
             if (res['success']) {
               this.flashData.content = '';
               this.getFlashList(this.flashData.type);
+            } else {
+              this.router.navigate(['/login']);
             }
           });
     } else {

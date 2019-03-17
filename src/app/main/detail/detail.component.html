@@ -3,7 +3,7 @@
         {{detail.title}}
     </div>
     <div class="desc">
-        <span (click)="edit()">编辑</span> <span>{{detail.createTime}}</span><span>{{detail.author}}</span>
+        <span class="edit-btn" (click)="edit()">编辑</span> <span>{{detail.createTime}}</span><span>{{detail.author}}</span>
     </div>
     <div class="content">
         <div [innerHTML]="detail.content">
