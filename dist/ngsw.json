@@ -7,14 +7,14 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/4.88886a741273d41b8d0e.js",
-        "/5.a9aa87f34bc904f726cc.js",
+        "/4.1faea3c74f997e6d9fc3.js",
+        "/5.7a313efe7294a507a61d.js",
         "/favicon.ico",
         "/index.html",
-        "/main.7cfa163abc0ab34de8bd.js",
+        "/main.d7d73ba9b703c4dbe4b7.js",
         "/polyfills.fb087d5ed4ca4d598c4b.js",
-        "/runtime.6478eb4e3c4d128d4014.js",
-        "/styles.a38a633ff44c8dafbe25.css"
+        "/runtime.45ba50e94464e90f5956.js",
+        "/styles.c82c74634525a779f4f6.css"
       ],
       "patterns": []
     },
@@ -31,16 +31,21 @@
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
         "/assets/icons/icon-96x96.png",
+        "/assets/img/hand-pointer-o.png",
         "/assets/img/header.jpeg",
-        "/assets/lang/zh_CN.js"
+        "/assets/img/hugh.jpg",
+        "/assets/lang/zh_CN.js",
+        "/assets/styles/3dbutton.scss",
+        "/assets/styles/formstyle.scss",
+        "/assets/tinymce/langs/zh_CN.js"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/4.88886a741273d41b8d0e.js": "943cd3994447787b4dc34b19e1fd9d46bf1597db",
-    "/5.a9aa87f34bc904f726cc.js": "ee92a90c981c0350aaee68279477305fe2745d60",
+    "/4.1faea3c74f997e6d9fc3.js": "688de171b8a50e40ca3cf28a1735e467e9c6e6a7",
+    "/5.7a313efe7294a507a61d.js": "df436c48256bd304d25193076358df05114991c2",
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -49,14 +54,19 @@
     "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/img/hand-pointer-o.png": "bec60b6c1a540c5ebe8634145037b4cd0a89e001",
     "/assets/img/header.jpeg": "4fa7bb5a94a4a6f47d9f275294b331ab6f887874",
+    "/assets/img/hugh.jpg": "79a0c8e488e1fc2ff2cfa44549d869c4206bba54",
     "/assets/lang/zh_CN.js": "dd0b565e18104628176b0ba3e686a4b1fb918ca8",
+    "/assets/styles/3dbutton.scss": "37430bbaa2ee1c60cd21b4eea1a7fde71c5cdae3",
+    "/assets/styles/formstyle.scss": "0aaabe275588265bd3e195fd14ef7da3f7b2aef1",
+    "/assets/tinymce/langs/zh_CN.js": "dd0b565e18104628176b0ba3e686a4b1fb918ca8",
     "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/index.html": "2bd01a92447dc5b86888045e4d69a05dc600f0bc",
-    "/main.7cfa163abc0ab34de8bd.js": "5f2998a3b439b3c2dbc15f42dcbacfc7fe54ac1d",
+    "/index.html": "b4cca4276e5d66cd3ad77cc19e294d85dd0f1d8e",
+    "/main.d7d73ba9b703c4dbe4b7.js": "e45ea7c67bbea191f49c6659a2215540258f017b",
     "/polyfills.fb087d5ed4ca4d598c4b.js": "ce68d153e9b9b6d26b625069c0ee99ae09c6f255",
-    "/runtime.6478eb4e3c4d128d4014.js": "6d66034658b7c2fd00d988b4780efe43d1bc4cb7",
-    "/styles.a38a633ff44c8dafbe25.css": "d233d5f7d66a660978e01cf7b5f3f87af4b3ce26"
+    "/runtime.45ba50e94464e90f5956.js": "49b0e4fd30bcfea5df4fa07abba7cbd5a5d7db66",
+    "/styles.c82c74634525a779f4f6.css": "355a9fdf6f778e96daf32bff4b7be2dc91e335a5"
   },
   "navigationUrls": [
     {

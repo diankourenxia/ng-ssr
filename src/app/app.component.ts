@@ -4,6 +4,7 @@ import { map, filter } from 'rxjs/operators';
 import { debounceTime } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {
   trigger,
   state,
@@ -32,10 +33,10 @@ interface FlashSchema {
         opacity: 0.5
       })),
       transition('open => closed', [
-        animate('0.35s')
+        animate('0.28s')
       ]),
       transition('closed => open', [
-        animate('0.35s')
+        animate('0.28s')
       ]),
     ]),
     trigger('activeTag', [
@@ -56,11 +57,11 @@ interface FlashSchema {
     trigger('activeContent', [
       transition(':enter', [
         style({ 'transform': 'translateY(-100%)' }),
-        animate('0.5s', style({ 'transform': 'translateY(0)' })),
+        animate('0.3s', style({ 'transform': 'translateY(0)' })),
       ]),
       transition(':leave', [
         style({ 'transform': 'translateY(0)' }),
-        animate('0.5s', style({ 'transform': 'translateY(100%)' }))
+        animate('0.3s', style({ 'transform': 'translateY(100%)' }))
       ])
     ])
   ]
@@ -137,6 +138,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.flashList = val['data'];
     });
   }
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event);
+    moveItemInArray(this.flashList, event.previousIndex, event.currentIndex);
+  }
   onSubmit() {
     if (this.flashData.content) {
       this.http.post('/api/flash/add',
@@ -150,7 +155,6 @@ export class AppComponent implements OnInit, AfterViewInit {
             }
           });
     } else {
-      console.log(111);
     }
   }
   ngAfterViewInit() {

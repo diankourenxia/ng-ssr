@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 registerLocaleData(en);
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ registerLocaleData(en);
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    DragDropModule,
     EditorModule,
     FormsModule,
     ReactiveFormsModule,
