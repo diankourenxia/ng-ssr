@@ -4,7 +4,7 @@ import { map, filter } from 'rxjs/operators';
 import { debounceTime } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import {
   trigger,
   state,
@@ -83,6 +83,12 @@ export class AppComponent implements OnInit, AfterViewInit {
       isActive: false,
       contentPosition: 'next',
       type: 'tostudy'
+    },
+    {
+      title: 'blog',
+      isActive: false,
+      contentPosition: 'next',
+      type: 'blog'
     }
   ];
   flashList = [];

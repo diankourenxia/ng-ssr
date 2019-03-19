@@ -27,6 +27,11 @@
             background: #8ec3ffad;
             // box-shadow: -4px 3px 7px 1px #5d82ad;
         }
+        &:nth-child(3) {
+            top: 100px;
+            background: #8ec3ffad;
+            // box-shadow: -4px 3px 7px 1px #5d82ad;
+        }
     }
     h1 {
         text-align: center;
@@ -90,6 +95,8 @@
     background: white;
     border-radius: 4px;
     overflow: hidden;
+    overflow-y: scroll;
+    height: 480px;
 }
 
 .example-box {
