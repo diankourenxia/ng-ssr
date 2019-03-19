@@ -7,7 +7,7 @@ import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { DoorComponent } from './door/door.component';
 import { LayoutComponent } from '../components/layout/layout.component';
-
+import { CardListComponent } from '../components/card-list/card-list.component';
 const mainRoutes: Routes = [
   {
     path: '', component: MainComponent, data: { title: 'door' },
@@ -25,7 +25,7 @@ const mainRoutes: Routes = [
   }
 ];
 @NgModule({
-  declarations: [MainComponent, LayoutComponent, PreCodeComponent, ListComponent, DetailComponent, DoorComponent],
+  declarations: [MainComponent, CardListComponent, LayoutComponent, PreCodeComponent, ListComponent, DetailComponent, DoorComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(mainRoutes)

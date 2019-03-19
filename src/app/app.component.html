@@ -10,12 +10,12 @@
                 <h1>{{items.title}}</h1>
                 <div class="form-container">
                     <form>
-                        <input type='textarea' name='content' [(ngModel)]='flashData.content'>
+                        <input type='textarea' name='content' [(ngModel)]='flashData["content"]'>
                         <button type="submit" class="btn btn-success" (click)='onSubmit()'>Submit</button>
                     </form>
                 </div>
                 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-                    <div *ngFor="let item of flashList" class="example-box" cdkDrag>
+                    <div *ngFor="let item of items.list" class="example-box" cdkDrag>
                         {{item.content}}
                     </div>
                 </div>

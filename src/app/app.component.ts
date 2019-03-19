@@ -76,19 +76,22 @@ export class AppComponent implements OnInit, AfterViewInit {
       title: '待办',
       isActive: false,
       contentPosition: 'next',
-      type: 'todo'
+      type: 'todo',
+      list: []
     },
     {
       title: '待学',
       isActive: false,
       contentPosition: 'next',
-      type: 'tostudy'
+      type: 'tostudy',
+      list: []
     },
     {
       title: 'blog',
       isActive: false,
       contentPosition: 'next',
-      type: 'blog'
+      type: 'blog',
+      list: []
     }
   ];
   flashList = [];
@@ -109,12 +112,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log(event);
       });
 
-    // this.getCalSize();
-    //     fromEvent(window, 'resize')
-    //   .pipe(debounceTime(100))
-    //   .subscribe((event) => {
-    //     this.getCalSize();
-    //     });
+    this.flashTypeList.forEach(item => {
+      this.getFlashList(item);
+    });
   }
   openClose(item) {
     if (this.isOpen && item.isActive) {
@@ -122,7 +122,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       item.isActive = false;
     } else {
       this.flashData.type = item.type;
-      this.getFlashList(item.type);
       this.isOpen = true;
       item.isActive = 'false';
       item.contentPosition = 'on';
@@ -139,9 +138,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     // console.log(calSize);
     // document.documentElement.style.fontSize = calSize > 60 ? '60px' : calSize + 'px';
   }
-  getFlashList(type) {
-    this.http.post('/api/flash/list', { type: type }).subscribe((val) => {
-      this.flashList = val['data'];
+  getFlashList(item) {
+    this.http.post('/api/flash/list', { type: item.type }).subscribe((val) => {
+      item.list = val['data'];
     });
   }
   drop(event: CdkDragDrop<string[]>) {
@@ -155,7 +154,9 @@ export class AppComponent implements OnInit, AfterViewInit {
           res => {
             if (res['success']) {
               this.flashData.content = '';
-              this.getFlashList(this.flashData.type);
+              this.getFlashList(this.flashTypeList.filter(item => {
+                return item.type === this.flashData.type;
+              })[0]);
             } else {
               this.router.navigate(['/login']);
             }
