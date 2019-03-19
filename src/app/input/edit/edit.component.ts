@@ -53,12 +53,12 @@ export class EditComponent implements OnInit, AfterViewInit {
   ];
   editParam = {
     selector: 'textarea',
-    plugins: 'link lists image code table colorpicker textcolor wordcount contextmenu',
+    plugins: 'link lists image code table colorpicker textcolor wordcount contextmenu codesample',
     language_url: '../../../assets/tinymce/langs/zh_CN.js',
     language: 'zh_CN',
-    toolbar: 'bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft'
+    toolbar: 'codesample | bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft'
       + ' aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo '
-      + '| link unlink image code | removeformat | codesample',
+      + '| link unlink image code | removeformat',
     height: 400,
     codesample_languages: [
       { text: 'HTML/XML', value: 'markup' },
