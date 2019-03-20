@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { baseInfo } from '../database/baseInfo';
 import { HttpClient } from '@angular/common/http';
 import { Articel } from '../../data-model/article-model';
 import { switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import * as hljs from 'highlight.js';
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.scss']
+  styleUrls: ['./detail.component.scss', './default.css']
 })
 export class DetailComponent implements OnInit {
+  @ViewChild('code') codeElement: ElementRef;
+
+  languages = ['html', 'typescript'];
 
   detail = {
     title: 'koa+mongodb初探',
@@ -21,7 +26,10 @@ export class DetailComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.route.paramMap.source['value']);
+    tinymce.init({
+      selector: '#myeditablediv',  // change this value according to your HTML
+      inline: true
+    });
     // this.route.paramMap.pipe(
     //   switchMap((params: ParamMap) =>
     //     params.get('id')
@@ -29,15 +37,14 @@ export class DetailComponent implements OnInit {
     // ).subscribe((val) => {
     //   console.log(val);
     this.http.get('/api/article/get?title=' + this.route.paramMap.source['value']['title']).subscribe(res => {
-      console.log(res);
+      hljs.highlightAuto(res['data'][0].content);
       this.detail = res['data'][0];
-      // this.detail = res;
+      // hljs.highlightBlock(this.codeElement.nativeElement);
     });
     // })
 
   }
   edit() {
-    console.log(1);
     this.router.navigate(['/input/edit', this.detail.title]);
   }
 

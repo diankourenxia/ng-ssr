@@ -6,8 +6,10 @@
         <span class="edit-btn" (click)="edit()">编辑</span> <span>{{detail.createTime}}</span><span>{{detail.author}}</span>
     </div>
     <div class="content">
-        <div [innerHTML]="detail.content">
+
+        <div [innerHTML]="detail.content" #code highlight class="javascript" id="test">
         </div>
+
     </div>
 
 </div>
