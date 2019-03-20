@@ -26,10 +26,6 @@ export class DetailComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    tinymce.init({
-      selector: '#myeditablediv',  // change this value according to your HTML
-      inline: true
-    });
     // this.route.paramMap.pipe(
     //   switchMap((params: ParamMap) =>
     //     params.get('id')
