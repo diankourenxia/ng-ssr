@@ -5,7 +5,16 @@ import { Articel } from '../../data-model/article-model';
 import { switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import * as hljs from 'highlight.js';
-
+interface ArticleDetail {
+  title: String;
+  content: String;
+  author: String;
+  createTime: Date;
+  desc?: String;
+  updateTime?: Date;
+  categorys?: Array<String>;
+  tags?: Array<String>;
+}
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -16,8 +25,7 @@ export class DetailComponent implements OnInit {
 
   languages = ['html', 'typescript'];
 
-  detail = {
-  };
+  detail: ArticleDetail;
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -36,7 +44,7 @@ export class DetailComponent implements OnInit {
 
   }
   edit() {
-    this.router.navigate(['/input/edit', this.detail['title']]);
+    this.router.navigate(['/input/edit', this.detail.title]);
   }
 
 }
