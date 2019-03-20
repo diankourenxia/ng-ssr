@@ -17,11 +17,6 @@ export class DetailComponent implements OnInit {
   languages = ['html', 'typescript'];
 
   detail = {
-    title: 'koa+mongodb初探',
-    content: '初步:搭建好koa,mongodb,启动mongodb服务,在koa中使用mongoose链接mongodb',
-    author: 'hugh',
-    createTime: '2019.2.12',
-    categorys: ['koa', 'mongodb', 'mongoose']
   };
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
@@ -41,7 +36,7 @@ export class DetailComponent implements OnInit {
 
   }
   edit() {
-    this.router.navigate(['/input/edit', this.detail.title]);
+    this.router.navigate(['/input/edit', this.detail['title']]);
   }
 
 }
