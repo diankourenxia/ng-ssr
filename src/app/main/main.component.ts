@@ -6,20 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  todoList = [
-    {
-      content: '后端'
-    }
-  ];
-  didList = [
-    {
-      title: 'xxx',
-      content: 'sdfsdfs',
-      author: 'hugh',
-      createTime: '2019.2.12',
-      categorys: ['学习', '博客']
-    }
-  ];
   constructor() { }
 
   ngOnInit() {
