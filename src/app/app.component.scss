@@ -19,17 +19,17 @@
         border-radius: 0 0 0 10px;
         &:nth-child(1) {
             top: 0;
-            background: #8ec3ffad;
+            background: #8ec3ff;
             // box-shadow: -4px 3px 7px 1px #5d82ad;
         }
         &:nth-child(2) {
             top: 50px;
-            background: #8ec3ffad;
+            background: #8ec3ff;
             // box-shadow: -4px 3px 7px 1px #5d82ad;
         }
         &:nth-child(3) {
             top: 100px;
-            background: #8ec3ffad;
+            background: #8ec3ff;
             // box-shadow: -4px 3px 7px 1px #5d82ad;
         }
     }
@@ -48,7 +48,7 @@
             height: 100%;
             position: absolute;
             box-sizing: border-box;
-            background: #8ec3ffad;
+            background: #8ec3ff;
         }
         .form-container {
             width: 100%;

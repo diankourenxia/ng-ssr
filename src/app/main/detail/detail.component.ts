@@ -20,8 +20,8 @@ interface ArticleDetail {
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss', './default.css']
 })
-export class DetailComponent implements OnInit {
-  @ViewChild('code') codeElement: ElementRef;
+export class DetailComponent implements OnInit, AfterViewInit {
+  @ViewChild('code2') codeElement: ElementRef;
 
   languages = ['html', 'typescript'];
 
@@ -38,10 +38,15 @@ export class DetailComponent implements OnInit {
     this.http.get('/api/article/get?title=' + this.route.paramMap.source['value']['title']).subscribe(res => {
       hljs.highlightAuto(res['data'][0].content);
       this.detail = res['data'][0];
-      // hljs.highlightBlock(this.codeElement.nativeElement);
+      hljs.highlightBlock(this.codeElement.nativeElement);
     });
     // })
 
+  }
+  ngAfterViewInit(): void {
+    hljs.highlightBlock(this.codeElement.nativeElement);
+    // this.codeElement.nativeElement.textContent = 'console.log(b)';
+    // hljs.highlightBlock(this.codeElement.nativeElement);
   }
   edit() {
     this.router.navigate(['/input/edit', this.detail.title]);

@@ -79,6 +79,7 @@ export class EditComponent implements OnInit, AfterViewInit {
         this.detail.tags = Array.from(new Set(this.detail.tags));
         this.detail.categories = Array.from(new Set(this.detail.categories));
         this.tagChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
+        this.catChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
         // this.detail = res;
       });
     }
