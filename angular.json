@@ -33,6 +33,7 @@
                             }
                         ],
                         "styles": [
+                            "src/assets/styles/prism.css",
                             "src/styles.scss"
                         ],
                         "scripts": []

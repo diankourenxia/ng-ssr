@@ -21,7 +21,7 @@ interface ArticleDetail {
   styleUrls: ['./detail.component.scss', './default.css']
 })
 export class DetailComponent implements OnInit, AfterViewInit {
-  @ViewChild('code2') codeElement: ElementRef;
+  @ViewChild('code') codeElement: ElementRef;
 
   languages = ['html', 'typescript'];
 
