@@ -3,6 +3,13 @@
     max-width: 266px;
 }
 
+.edit-main {
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .editor-container {
     position: relative;
     .editor-part {
