@@ -76,6 +76,8 @@ export class EditComponent implements OnInit, AfterViewInit {
         console.log(res);
         this.detail = res['data'][0];
         Object.assign(this.editData, this.detail);
+        this.detail.tags = new Set(this.detail.tags);
+        this.detail.categories = new Set(this.detail.categories);
         this.tagChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
         // this.detail = res;
       });
