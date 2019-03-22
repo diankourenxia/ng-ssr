@@ -1,12 +1,12 @@
 <div class="detail-main">
-    <div class="header" *ngIf="detail">
+    <div class="header">
         {{detail.title}}
     </div>
-    <div class="desc" *ngIf="detail">
+    <div class="desc">
         <span class="edit-btn" (click)="edit()">编辑</span> <span>{{detail.createTime}}</span><span>{{detail.author}}</span>
     </div>
     <div class="content">
-        <div #code [innerHTML]="detail.content" highlight>
+        <div [innerHTML]="detail.content">
         </div>
     </div>
 </div>
