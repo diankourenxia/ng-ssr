@@ -10,7 +10,7 @@ interface ArticleDetail {
   title: String;
   content: String;
   author: String;
-  createTime: Date;
+  createTime?: Date;
   desc?: String;
   updateTime?: Date;
   categorys?: Array<String>;
