@@ -1,10 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss', './3d.css'],
+  animations: [
+    trigger('3d', [
+      state('home', style({
+        transform: 'translateZ(-120px) rotateY(0deg)'
+      })),
+      state('register', style({
+        transform: 'translateZ(-120px) rotateY(-90deg)'
+      })),
+      state('misc', style({
+        transform: 'translateZ(-120px) rotateY(180deg)'
+      })),
+    ])
+  ]
 })
 export class LoginComponent implements OnInit {
   loginData = {
@@ -16,6 +36,7 @@ export class LoginComponent implements OnInit {
     password: null,
     email: null
   };
+  dState = 'home';
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -44,5 +65,9 @@ export class LoginComponent implements OnInit {
           }
         });
   }
+  test(type) {
+    this.dState = type;
+  }
+
 
 }

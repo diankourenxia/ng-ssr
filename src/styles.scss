@@ -31,13 +31,16 @@ input {
 }
 
 button {
-    width: 100px;
-    height: 40px;
-    cursor: url('./assets/img/hand-pointer-o.png') pointer;
+    width: 80px;
+    height: 30px;
+    cursor: url('./assets/img/hand-pointer-o.ico'), pointer;
     text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    border-radius: 10px;
+    line-height: 1;
+    font-size: 14px;
+    border-radius: 5px;
+    font-family: inherit;
+    word-spacing: normal;
+    font: 400 11px system-ui;
     &.btn {
         background: white;
         color: black;

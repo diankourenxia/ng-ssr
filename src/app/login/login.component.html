@@ -1,10 +1,10 @@
 <div class="body">
 
     <div class="login-main">
-        <div class="header-img">
+        <!-- <div class="header-img">
 
-        </div>
-        <div class="title">
+        </div> -->
+        <!-- <div class="title">
             Member Login
         </div>
         <form #loginForm="ngForm" (submit)="login(1)">
@@ -19,8 +19,82 @@
             </div>
 
             <button type="submit" class="btn btn-success btn-submit" [disabled]="!loginForm.form.valid">登录</button>
-        </form>
-
+        </form> -->
+        <ul id="cube" class="" [@3d]="dState">
+            <li class="side">
+                <form #loginForm="ngForm" (submit)="login(1)">
+                    <div class="form-group">
+                        <label for="username"></label>
+                        <input type="text" class="form-control" id="username" required [(ngModel)]="loginData.username" name="username" placeholder="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password"></label>
+                        <input type="password" class="form-control" required [(ngModel)]="loginData.password" name="password" placeholder="password">
+                    </div>
+                    <button type="submit" class="btn" [disabled]="!loginForm.form.valid">登录</button>
+                    <div class="switcher register" (click)="test('register')">注册</div>
+                </form>
+            </li>
+            <li class="side">
+                <form #loginForm="ngForm" (submit)="login(1)">
+                    <div class="form-group">
+                        <label for="username"></label>
+                        <input type="text" class="form-control" id="username" required [(ngModel)]="loginData.username" name="username" placeholder="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password"></label>
+                        <input type="password" class="form-control" required [(ngModel)]="loginData.password" name="password" placeholder="password">
+                    </div>
+                    <button type="submit" class="btn" [disabled]="!loginForm.form.valid">注册</button>
+                    <div class="switcher login" (click)="test('home')">登录</div>
+                </form>
+            </li>
+            <li class="side">
+                <ul>
+                    <li><i class="icon-chevron-left icon-2x"></i><span><br>Back</span></li>
+                    <li></li>
+                    <li class="misc"><i class="round icon-asterisk icon-2x"></i></li>
+                    <li class="misc" data-url="patternwall.net"><i class="icon-th icon-2x"></i><span>Patternwall</span></li>
+                </ul>
+            </li>
+            <li class="side">
+                <ul>
+                    <li><i class="icon-chevron-left icon-2x"></i><span><br>Back</span></li>
+                    <li></li>
+                    <li class="about"><i class="round icon-user icon-2x"></i></li>
+                    <li class="about"><i class="icon-book icon-2x"></i><span>History</span></li>
+                    <li class="about"><i class="icon-group icon-2x"></i><span>Our team</span></li>
+                </ul>
+            </li>
+            <li class="side">
+                <ul>
+                    <li class="social"><i class="icon-chevron-left icon-2x"></i><span><br>Back</span></li>
+                    <li class="dribbble">
+                        <h3>Dribbble</h3>
+                    </li>
+                    <li class="dribbble"><i class="icon-dribbble icon-2x round"></i></li>
+                    <li></li>
+                    <li class="dribbble" data-url="dribbble.com/Vaddo"><i class="icon-dribbble icon-4x"></i></li>
+                    <li></li>
+                    <li class="dribbble" data-url="dribbble.com/Vaddo">
+                        <p>I would like to join Dribbble :)<br> Could somebody invite me please?</p>
+                    </li>
+                </ul>
+            </li>
+            <li class="side">
+                <ul>
+                    <li><i class="icon-chevron-left icon-2x"></i><span><br>Back</span></li>
+                    <li class="social">
+                        <h3>Social</h3>
+                    </li>
+                    <li class="social"><i class="icon-comments-alt icon-2x round"></i></li>
+                    <li class="social" data-url="github.com/Vaddo"><i class="icon-github-alt icon-2x"></i><span>Github</span></li>
+                    <li class="social" data-url="twitter.com/vadimhermann"><i class="icon-twitter icon-2x"></i><span>Twitter</span></li>
+                    <li class="dribbble" data-url="click!"><i class="icon-dribbble icon-2x"></i><span>Dribbble</span></li>
+                    <li class="social" data-url="xing.com/profile/Vadim_Hermann"><i class="icon-xing icon-2x"></i><span>XING</span></li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </div>
 <!-- <form #registerForm="ngForm" (submit)="register(2)">

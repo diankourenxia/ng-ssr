@@ -25,11 +25,11 @@ interface FlashSchema {
   animations: [
     trigger('openClose', [
       state('open', style({
-        right: '0',
+        transform: 'translate3d(0,0,0)',
         opacity: 1
       })),
       state('closed', style({
-        right: '-40%',
+        transform: 'translate3d(100%,0,0)',
         opacity: 0.5
       })),
       transition('open => closed', [

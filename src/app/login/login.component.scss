@@ -2,7 +2,11 @@
     width: 100%;
     height: 100vh;
     position: relative;
-    background: linear-gradient(to top, rgb(88, 88, 85), rgb(120, 165, 165), rgb(230, 236, 198));
+    background: url('../../assets/img/login-bg.jpg') 100% 100% no-repeat;
+    background-clip: content-box;
+    background-origin: content-box;
+    background-size: 1600px;
+    // background: linear-gradient(to top, rgb(88, 88, 85), rgb(120, 165, 165), rgb(230, 236, 198));
     .login-main {
         width: 42vh;
         height: 45vh;
@@ -13,10 +17,11 @@
         left: 0;
         right: 0;
         top: 0;
+        opacity: 0.85;
         bottom: 0;
         border-radius: 10px;
-        background: rgb(233, 238, 214);
-        box-shadow: 7px 7px 24px #4c4949;
+        // background: rgb(233, 238, 214);
+        // box-shadow: 7px 7px 24px #4c4949;
         .header-img {
             position: absolute;
             width: 50%;
@@ -37,21 +42,35 @@
             margin: auto;
             margin-bottom: 10px;
             width: 70%;
+            margin-top: 20px;
             input {
                 width: 100%;
                 border-radius: 5px;
                 height: 5vh;
                 box-shadow: none;
-                background: rgb(230, 237, 197);
+                // background: rgb(230, 237, 197);
             }
         }
-        .btn-submit {
-            margin: 5% 15%;
-            width: 70%;
-            color: white;
-            background: rgb(122, 169, 167);
-            border-radius: 5px;
-            height: 5vh;
+        button {
+            display: block;
+            margin: 0 auto;
         }
+    }
+}
+
+.switcher {
+    width: 60px;
+    height: 30px;
+    line-height: 1;
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    &.register {
+        bottom: 0;
+        right: 0;
+    }
+    &.login {
+        bottom: 0;
+        left: 0;
     }
 }
