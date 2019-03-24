@@ -1,11 +1,11 @@
-<div>
+<!-- <div>
     <div class="header did">
         <h1>didList</h1>
     </div>
     <div class="header todo">
         <h1>todoList</h1>
     </div>
-</div>
+</div> -->
 <div>
     <div class="did list-container">
         <div *ngFor="let item of didList" class="did-list-part">
@@ -19,16 +19,16 @@
                 <a [routerLink]="['/main/detail', item.title]">继续阅读 >></a> </div>
         </div>
     </div>
-    <div class="todo list-container">
-        <!-- <div class="header">
+    <!-- <div class="todo list-container">
+        <div class="header">
             <h1>todoList</h1>
-        </div> -->
+        </div>
         <div *ngFor="let item of todoList" class="todo-list-part">
             <div class="date">{{item.createTime}}</div>
             <div class="content"><span class="status" [ngClass]="{'isDone':item.status==='done'}"></span> {{item.content}}
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <!-- <div class="list-main">
     <app-card-list [list]="didList"></app-card-list>
