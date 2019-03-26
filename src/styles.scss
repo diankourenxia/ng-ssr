@@ -396,3 +396,17 @@ article .entry-content pre code {
     padding: 0;
     line-height: 26px;
 }
+
+code {
+    font-family: Consolas, "Courier New", Courier, FreeMono, monospace;
+    font-size: 0.7rem;
+    color: rgb(199, 37, 78);
+    background: rgb(249, 242, 244);
+    border-radius: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+p img {
+    max-width: 100%;
+}

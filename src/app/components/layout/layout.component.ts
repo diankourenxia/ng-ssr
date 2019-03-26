@@ -6,10 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-  navList = [{
-    url: '/main',
-    desc: '首页'
-  }, {
+  navList = [ {
     url: '/main/list',
     desc: '列表'
   }, {

@@ -36,6 +36,10 @@ export class LoginComponent implements OnInit {
     password: null,
     email: null
   };
+  obj1 = {
+    a: 1,
+    foo: this.testThis()
+  };
   dState = 'home';
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
@@ -67,6 +71,9 @@ export class LoginComponent implements OnInit {
   }
   test(type) {
     this.dState = type;
+  }
+  testThis() {
+    console.log(this);
   }
 
 

@@ -82,10 +82,18 @@ export class EditComponent implements OnInit, AfterViewInit {
         this.catChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
         // this.detail = res;
       });
+    } else if (localStorage.getItem('articleDetaill')) {
+      this.detail = localStorage.getItem('articleDetaill');
+      this.tagChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
+      this.catChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
     }
+
 
   }
   ngAfterViewInit() {
+    setInterval(() => {
+      localStorage.setItem('articleDetail', this.detail);
+    }, 6000);
   }
   submitEdit() {
     this.editData.tags = [];
@@ -102,6 +110,7 @@ export class EditComponent implements OnInit, AfterViewInit {
         this.editData).subscribe(
           res => {
             if (res['success']) {
+              localStorage.removeItem('articleDetail');
               this.router.navigate(['/main/list']);
             }
           });
@@ -110,6 +119,7 @@ export class EditComponent implements OnInit, AfterViewInit {
         this.editData).subscribe(
           res => {
             if (res['success']) {
+              localStorage.removeItem('articleDetail');
               this.router.navigate(['/main/list']);
             }
           });

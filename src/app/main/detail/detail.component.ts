@@ -41,5 +41,12 @@ export class DetailComponent implements OnInit, AfterViewInit {
   edit() {
     this.router.navigate(['/input/edit', this.detail.title]);
   }
+  delete() {
+    this.http.post('/api/article/delete', { title: this.route.paramMap.source['value']['title'] }).subscribe(res => {
+      if (res['success']) {
+        this.router.navigate(['/main/list']);
+      }
+    });
+  }
 
 }
