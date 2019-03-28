@@ -1,0 +1,33 @@
+<div class="edit-main">
+    <form #editForm="ngForm" (submit)="submitEdit()">
+        <div class="form-group">
+            <label for="title"></label>
+            <input type="text" class="form-control lang-input" id="title" required [(ngModel)]="editData.title" name="title" placeholder="title">
+        </div>
+        <div class="form-group">
+            <label for="des"></label>
+            <input type="text" class="form-control lang-input" id="des" required [(ngModel)]="editData.desc" name="des" placeholder="描述">
+        </div>
+        <div class="form-group">
+            <label for="author"></label>
+            <input type="text" class="form-control" id="author" required [(ngModel)]="editData.author" name="author" placeholder="作者">
+        </div>
+        <div class="form-group">
+            <app-choose-list [list]=categoryList [title]="'类别'" #catChoose></app-choose-list>
+        </div>
+        <div class="form-group">
+            <app-choose-list [list]=tagList [title]="'标签'" #tagChoose></app-choose-list>
+        </div>
+        <div class="form-group editor-container">
+            <editor class="editor-part" apiKey=ptnnw15px4ils3sllw1sv54m6kl6flak2mdocfj72k0jv9w2 [init]=editParam [(ngModel)]="editData.content" name="content"></editor>
+
+            <div class="editor-show" [innerHTML]="editData.content"></div>
+        </div>
+        <div style="padding-left: 10px;
+        margin-top: 20px;">
+            <button type="submit" class="bt button" [disabled]="!editForm.form.valid">提交</button>
+
+        </div>
+    </form>
+
+</div>

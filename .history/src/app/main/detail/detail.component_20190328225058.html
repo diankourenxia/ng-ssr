@@ -1,0 +1,12 @@
+<div class="detail-main">
+    <div class="header">
+        {{detail.title}}
+    </div>
+    <div class="desc">
+        <span class="edit-btn" (click)="delete()">删除</span> <span class="edit-btn" (click)="edit()">编辑</span> <span>{{detail.createTime}}</span><span>{{detail.author}}</span>
+    </div>
+    <div class="content">
+        <div [innerHTML]="detail.content">
+        </div>
+    </div>
+</div>
