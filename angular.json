@@ -30,12 +30,9 @@
                                 "glob": "**/*",
                                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
                                 "output": "/assets/"
-                            },
-                            { "glob": "**/*", "input": "./node_modules/tinymce/skins", "output": "/skins/" },
-                            { "glob": "**/*", "input": "./node_modules/tinymce/plugins", "output": "/plugins/" }
+                            }
                         ],
                         "styles": [
-                            "node_modules/tinymce/skins/ui/oxide/skin.min.css",
                             "src/styles.scss",
                             "src/assets/styles/prism.css"
                         ],

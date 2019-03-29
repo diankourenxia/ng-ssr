@@ -4,12 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChooseListComponent } from '../../components/choose-list/choose-list.component';
-// Import TinyMCE
-import tinymce from 'tinymce/tinymce';
 
-
-// A theme is also required
-import 'tinymce/themes/silver/theme';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -101,9 +96,6 @@ export class EditComponent implements OnInit, AfterViewInit {
 
   }
   ngAfterViewInit() {
-    tinymce.init({
-      selector: 'textarea'
-    });
     setInterval(() => {
       localStorage.setItem('articleDetail', this.detail);
     }, 6000);

@@ -19,7 +19,7 @@
             <app-choose-list [list]=tagList [title]="'标签'" #tagChoose></app-choose-list>
         </div>
         <div class="form-group editor-container">
-            <editor class="editor-part" [init]=editParam [(ngModel)]="editData.content" name="content"></editor>
+            <editor class="editor-part" apiKey=ptnnw15px4ils3sllw1sv54m6kl6flak2mdocfj72k0jv9w2 [init]=editParam [(ngModel)]="editData.content" name="content"></editor>
 
             <div class="editor-show" [innerHTML]="editData.content | bypassSecurityTrustHtml"></div>
         </div>
