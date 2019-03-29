@@ -40,8 +40,6 @@
                             "src/assets/styles/prism.css"
                         ],
                         "scripts": [
-                            "node_modules/tinymce/tinymce.min.js",
-                            "node_modules/tinymce/themes/mobile/theme.js",
                             "src/assets/js/prism.js"
                         ]
                     },
