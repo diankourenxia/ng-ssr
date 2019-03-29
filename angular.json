@@ -30,14 +30,20 @@
                                 "glob": "**/*",
                                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
                                 "output": "/assets/"
-                            }
+                            },
+                            { "glob": "**/*", "input": "./node_modules/tinymce/skins", "output": "/skins/" },
+                            { "glob": "**/*", "input": "./node_modules/tinymce/plugins", "output": "/plugins/" },
+                            { "glob": "**/*", "input": "./node_modules/tinymce/themes", "output": "/themes/" }
                         ],
                         "styles": [
                             "src/styles.scss",
                             "src/assets/styles/prism.css"
+
                         ],
                         "scripts": [
-                            "src/assets/js/prism.js"
+                            "src/assets/js/prism.js",
+                            "node_modules/tinymce/tinymce.js",
+                            "node_modules/tinymce/themes/mobile/theme.js"
                         ]
                     },
                     "configurations": {
