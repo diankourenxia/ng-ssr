@@ -26,13 +26,14 @@ interface ArticleDetail {
 export class DetailComponent implements OnInit, AfterViewInit {
   detail: ArticleDetail;
   constructor(private http: HttpClient, private route: ActivatedRoute,
-     private router: Router, private sanitizer: DomSanitizer,
+    private router: Router, private sanitizer: DomSanitizer,
     private titleServe: Title) {
-      titleServe.setTitle( this.route.paramMap.source['value']['title']);
+    console.log(this.route.paramMap.source['value']['title']);
+    titleServe.setTitle(this.route.paramMap.source['value']['title']);
   }
 
   ngOnInit() {
-    this.http.get('/api/article/get?title=' + this.route.paramMap.source['value']['title']).subscribe(res => {
+    this.http.post('/api/article/get',  {title: this.route.paramMap.source['value']['title']}).subscribe(res => {
       this.detail = res['data'][0];
       this.sanitizer.sanitize(SecurityContext.HTML, 'detail.content');
     });
@@ -47,7 +48,7 @@ export class DetailComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/input/edit', this.detail.title]);
   }
   delete() {
-    this.http.post('/api/article/delete', { title: this.route.paramMap.source['value']['title'] }).subscribe(res => {
+    this.http.post('/api/article/delete', { title: this.route.paramMap.source['value']['title']}).subscribe(res => {
       if (res['success']) {
         this.router.navigate(['/main/list']);
       }
