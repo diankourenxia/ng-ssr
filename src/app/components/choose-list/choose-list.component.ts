@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ElementRef } from '@angular/core';
 import { fromEvent, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 interface ChooseItem {
@@ -13,27 +13,20 @@ interface ChooseItem {
 export class ChooseListComponent implements OnInit, AfterViewInit {
   @Input() list: ChooseItem[];
   @Input() title: String;
-  choosedList: Array<String>;
-  constructor() {
-    this.choosedList = [];
+  choosedList: Array<String> = [];
+  constructor(private el: ElementRef) {
   }
   ngAfterViewInit() {
-    Object.assign(this, { choosedList: [] });
-    const item = document.getElementsByClassName('item');
-    console.log(item);
-    fromEvent(item, 'click').pipe(
-      map(e => e.target['innerText'].replace(/\s*/g, ''))
-    ).subscribe((val) => {
-      if (this.choosedList.includes(val)) {
-        this.choosedList.splice(this.choosedList.indexOf(val), 1);
-      } else {
-        this.choosedList.push(val);
-      }
-
-    });
   }
   ngOnInit() {
-
+  }
+  chooseOne(val) {
+    console.log(this.choosedList);
+    if (this.choosedList.includes(val)) {
+      this.choosedList.splice(this.choosedList.indexOf(val), 1);
+      } else {
+      this.choosedList.push(val);
+      }
   }
 
 }

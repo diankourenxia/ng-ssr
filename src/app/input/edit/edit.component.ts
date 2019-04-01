@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, OnDestroy } from '@angular/core';
 import { DidItem, LinkItem } from '../../interface/article';
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, ViewChild } from '@angular/core';
@@ -10,7 +10,7 @@ import { ChooseListComponent } from '../../components/choose-list/choose-list.co
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss', '../../../assets/styles/3dbutton.scss']
 })
-export class EditComponent implements OnInit, AfterViewInit {
+export class EditComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren('catChoose') catChoose: QueryList<any>;
   @ViewChildren('tagChoose') tagChoose: QueryList<any>;
   editData: DidItem = {
@@ -23,6 +23,7 @@ export class EditComponent implements OnInit, AfterViewInit {
     linkList: [],
   };
   detail;
+  storageInterval: any;
   categoryList = [
     {
       desc: '问题',
@@ -66,8 +67,8 @@ export class EditComponent implements OnInit, AfterViewInit {
       + '| link unlink image code | removeformat | h2 h4',
     height: 700,
     codesample_languages: [
-      { text: 'HTML/XML', value: 'markup' },
       { text: 'JavaScript', value: 'javascript' },
+      { text: 'HTML/XML', value: 'markup' },
       { text: 'CSS', value: 'css' },
       // { text: 'TypeScript', value: 'typescript' },
       { text: 'Java', value: 'java' }
@@ -78,38 +79,32 @@ export class EditComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     if (this.route.paramMap.source['value']['title']) {
       this.http.get('/api/article/get?title=' + this.route.paramMap.source['value']['title']).subscribe(res => {
-        console.log(res);
         this.detail = res['data'][0];
         Object.assign(this.editData, this.detail);
-        this.detail.tags = Array.from(new Set(this.detail.tags));
-        this.detail.categories = Array.from(new Set(this.detail.categories));
-        this.tagChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
-        this.catChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
-        // this.detail = res;
+        this.editData.tags = Array.from(new Set(this.detail.tags));
+        this.editData.categories = Array.from(new Set(this.detail.categories));
+        this.tagChoose.first.choosedList = this.editData.tags;
+        this.catChoose.first.choosedList = this.editData.categories;
       });
-    } else if (localStorage.getItem('articleDetaill')) {
-      this.detail = localStorage.getItem('articleDetaill');
-      this.tagChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
-      this.catChoose.first.choosedList = [...this.detail.tags, ...this.detail.categories];
+    } else if (localStorage.getItem('articleDetail')) {
+      setTimeout(() => {
+        this.editData = JSON.parse(localStorage.getItem('articleDetail'));
+        this.tagChoose.first.choosedList = this.editData.tags;
+        this.catChoose.first.choosedList = this.editData.categories;
+      }, 0);
     }
-
-
   }
   ngAfterViewInit() {
-    setInterval(() => {
-      localStorage.setItem('articleDetail', this.detail);
-    }, 6000);
+    this.storageInterval = setInterval(() => {
+      console.log('已缓存');
+      localStorage.setItem('articleDetail', JSON.stringify(this.editData));
+    }, 30000);
   }
   submitEdit() {
     this.editData.tags = [];
     this.editData.categories = [];
-    this.tagChoose.first.choosedList.forEach(item => {
-      if (this.tagList.includes(item)) {
-        this.editData.tags.push(item);
-      } else {
-        this.editData.categories.push(item);
-      }
-    });
+    this.editData.tags = this.tagChoose.first.choosedList;
+    this.editData.categories = this.catChoose.first.choosedList;
     if (this.editData['_id']) {
       this.http.post('/api/article/update',
         this.editData).subscribe(
@@ -135,4 +130,7 @@ export class EditComponent implements OnInit, AfterViewInit {
     item.isChoosed = !item.isChoosed;
   }
 
+  ngOnDestroy() {
+    clearInterval(this.storageInterval);
+  }
 }

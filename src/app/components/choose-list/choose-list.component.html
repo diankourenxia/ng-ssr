@@ -1,5 +1,5 @@
 <div class="choose-list-main">
-    <span>{{title}}:</span> <span class="item button" *ngFor="let item of list" [ngClass]="{'choosed': choosedList.includes(item.desc||item)}">
+    <span>{{title}}:</span> <span class="item button" *ngFor="let item of list" [ngClass]="{'choosed': choosedList.includes(item.desc||item)}" (click)="chooseOne(item.desc||item)">
    {{item.desc || item}}
  </span>
 </div>
