@@ -16,7 +16,7 @@
                 </div>
                 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
                     <div *ngFor="let item of items.list" class="example-box" cdkDrag>
-                        {{item.content}}
+                        {{item.content}} <span class="delete-icon" (click)="deleteFlash(item)">X</span>
                     </div>
                 </div>
             </div>

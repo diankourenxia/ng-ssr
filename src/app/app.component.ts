@@ -138,14 +138,28 @@ export class AppComponent implements OnInit, AfterViewInit {
     // console.log(calSize);
     // document.documentElement.style.fontSize = calSize > 60 ? '60px' : calSize + 'px';
   }
-  getFlashList(item) {
-    this.http.post('/api/flash/list', { type: item.type }).subscribe((val) => {
+  getFlashList(item, status = 'todo') {
+    this.http.post('/api/flash/list', { type: item.type, status: status }).subscribe((val) => {
       item.list = val['data'];
     });
   }
   drop(event: CdkDragDrop<string[]>) {
     console.log(event);
     moveItemInArray(this.flashList, event.previousIndex, event.currentIndex);
+  }
+  deleteFlash(item) {
+    item.status = 'done';
+    this.http.post('/api/flash/update',
+      item).subscribe(
+        res => {
+          if (res['success']) {
+            this.getFlashList(this.flashTypeList.filter(items => {
+              return items.type === this.flashData.type;
+            })[0]);
+          } else {
+            this.router.navigate(['/login']);
+          }
+        });
   }
   onSubmit() {
     if (this.flashData.content) {
