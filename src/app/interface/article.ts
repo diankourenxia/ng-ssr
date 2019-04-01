@@ -1,16 +1,16 @@
 export interface LinkItem {
-  url: String;
-  title?: String;
-  desc?: String;
+  url: string;
+  title?: string;
+  desc?: string;
 }
 export interface DidItem {
-  title: String;
-  author: String;
-  desc: String;
-  tags?: String[];
+  title: string;
+  author: string;
+  desc: string;
+  tags?: string[];
   createTime?: Date;
   updateTime?: Date;
-  content: String;
+  content: string;
   linkList?: LinkItem[];
-  categories: String[];
+  categories: string[];
 }

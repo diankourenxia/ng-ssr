@@ -7,14 +7,14 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import * as Prism from '../../../assets/js/prism.js';
 import { DomSanitizer } from '@angular/platform-browser';
 interface ArticleDetail {
-  title: String;
-  content: String;
-  author: String;
+  title: string;
+  content: string;
+  author: string;
   createTime?: Date;
-  desc?: String;
+  desc?: string;
   updateTime?: Date;
-  categorys?: Array<String>;
-  tags?: Array<String>;
+  categorys?: Array<string>;
+  tags?: Array<string>;
 }
 @Component({
   selector: 'app-detail',

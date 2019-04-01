@@ -42,8 +42,7 @@
                         ],
                         "scripts": [
                             "src/assets/js/prism.js",
-                            "node_modules/tinymce/tinymce.js",
-                            "node_modules/tinymce/themes/mobile/theme.js"
+                            "node_modules/tinymce/tinymce.js"
                         ]
                     },
                     "configurations": {

@@ -50,7 +50,7 @@ export class EditComponent implements OnInit, AfterViewInit {
     }
   ];
   tagList = [
-    'nodejs', 'angular', 'webpack', 'js', 'mongo', 'vue', 'react'
+    'nodejs', 'angular', 'webpack', 'js', 'mongo', 'vue', 'react', 'Typescript', 'css', 'html'
   ];
   editParam = {
     selector: 'textarea',
