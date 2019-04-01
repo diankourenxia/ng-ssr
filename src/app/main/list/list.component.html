@@ -11,7 +11,7 @@
         <div *ngFor="let item of didList" class="did-list-part">
             <div class="title">{{item.title}}</div>
             <div class="des">
-                <span class="time">{{item.createTime}}</span>
+                <span class="time">{{item.createTime | normalDate}}</span>
                 <span class="author">{{item.author}}</span>
             </div>
             <div class="content">{{item.desc}}</div>

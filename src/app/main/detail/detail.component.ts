@@ -6,6 +6,8 @@ import { switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import * as Prism from '../../../assets/js/prism.js';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
+
 interface ArticleDetail {
   title: string;
   content: string;
@@ -24,8 +26,9 @@ interface ArticleDetail {
 export class DetailComponent implements OnInit, AfterViewInit {
   detail: ArticleDetail;
   constructor(private http: HttpClient, private route: ActivatedRoute,
-     private router: Router, private sanitizer: DomSanitizer) {
-
+     private router: Router, private sanitizer: DomSanitizer,
+    private titleServe: Title) {
+      titleServe.setTitle( this.route.paramMap.source['value']['title']);
   }
 
   ngOnInit() {
