@@ -64,7 +64,7 @@ export class EditComponent implements OnInit, AfterViewInit {
     toolbar: 'codesample | bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft'
       + ' aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo '
       + '| link unlink image code | removeformat | h2 h4',
-    height: 400,
+    height: 700,
     codesample_languages: [
       { text: 'HTML/XML', value: 'markup' },
       { text: 'JavaScript', value: 'javascript' },
