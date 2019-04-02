@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { baseInfo } from '../database/baseInfo';
 import { HttpClient } from '@angular/common/http';
-
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -12,7 +12,9 @@ export class ListComponent implements OnInit {
   didList = [
   ];
   baseInfo = baseInfo;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private titleServe: Title) {
+    titleServe.setTitle('hughs前端博客');
+   }
 
   ngOnInit() {
     this.http.get('/api/article/list').subscribe((val) => {

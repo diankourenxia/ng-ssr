@@ -78,7 +78,7 @@ export class EditComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     if (this.route.paramMap.source['value']['title']) {
-      this.http.get('/api/article/get?title=' + this.route.paramMap.source['value']['title']).subscribe(res => {
+      this.http.post('/api/article/get', { title: this.route.paramMap.source['value']['title'] }).subscribe(res => {
         this.detail = res['data'][0];
         Object.assign(this.editData, this.detail);
         this.editData.tags = Array.from(new Set(this.detail.tags));
