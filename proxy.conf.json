@@ -1,8 +1,13 @@
 {
+    "/api/upload": {
+        "target": "https://ssr.nghugh.com",
+        "secure": false
+    },
     "/api": {
         "target": "http://127.0.0.1:3100",
         "secure": false
     },
+
     "/page": {
         "target": "http://192.168.2.116:9091",
         "secure": false

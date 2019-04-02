@@ -59,12 +59,14 @@ export class EditComponent implements OnInit, AfterViewInit, OnDestroy {
     // inline: false,
     // statusbar: false,
     // browser_spellcheck: true,
-    plugins: 'link lists image code table colorpicker textcolor wordcount contextmenu codesample',
+    plugins: `link lists image code table colorpicker fullscreen fullpage help
+    textcolor wordcount contextmenu codesample importcss media preview print
+    textpattern tabfocus hr directionality imagetools autosave paste`,
     language_url: '../../../assets/tinymce/langs/zh_CN.js',
     language: 'zh_CN',
     toolbar: 'codesample | bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft'
       + ' aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo '
-      + '| link unlink image code | removeformat | h2 h4',
+      + '| link unlink image code | removeformat | h2 h4 | fullscreen preview paste',
     height: 700,
     codesample_languages: [
       { text: 'JavaScript', value: 'javascript' },
@@ -72,7 +74,36 @@ export class EditComponent implements OnInit, AfterViewInit, OnDestroy {
       { text: 'CSS', value: 'css' },
       // { text: 'TypeScript', value: 'typescript' },
       { text: 'Java', value: 'java' }
-    ]
+    ],
+    images_upload_url: '/api/upload',
+    image_prepend_url: '/api/upload',
+    image_caption: true,
+    // paset 插件允许粘贴图片
+    paste_data_images: true,
+    imagetools_toolbar: 'rotateleft rotateright | flipv fliph | editimage imageoptions',
+    images_upload_handler: function (blobInfo, success, failure) {
+      let xhr, formData;
+      xhr = new XMLHttpRequest();
+      xhr.withCredentials = false;
+      xhr.open('POST', '/api/upload');
+      xhr.onload = function() {
+        let json;
+        if (xhr.status !== 200) {
+          failure('HTTP Error: ' + xhr.status);
+          return;
+        }
+        json = JSON.parse(xhr.responseText);
+        if (!json || typeof json.location !== 'string') {
+          failure('Invalid JSON: ' + xhr.responseText);
+          return;
+        }
+        success(json.location);
+      };
+      formData = new FormData();
+      formData.append('file', blobInfo.blob(), blobInfo.filename());
+      xhr.send(formData);
+    }
+
   };
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 

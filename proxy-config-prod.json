@@ -3,10 +3,7 @@
         "target": "https://ssr.nghugh.com",
         "secure": false
     },
-    "/page": {
-        "target": "https://ssr.nghugh.com",
-        "secure": false
-    },
+
     "/loan_platform_tag": {
         "target": "http://192.168.2.116:9091",
         "secure": false
