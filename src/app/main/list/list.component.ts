@@ -11,10 +11,26 @@ export class ListComponent implements OnInit {
   todoList = [];
   didList = [
   ];
+  menuList = [
+    {
+      desc: 'angular',
+      val: 'angular'
+    }, {
+      desc: 'js',
+      val: 'js'
+    },
+    {
+      desc: 'css',
+      val: 'css'
+    }, {
+      desc: 'nodejs',
+      val: 'nodejs'
+    }
+  ];
   baseInfo = baseInfo;
   constructor(private http: HttpClient, private titleServe: Title) {
     titleServe.setTitle('hughs前端博客');
-   }
+  }
 
   ngOnInit() {
     this.http.get('/api/article/list').subscribe((val) => {

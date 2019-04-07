@@ -55,18 +55,18 @@ export class EditComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
   editParam = {
     selector: 'textarea',
-    // skin_url: '/skins/lightgray',
-    // inline: false,
-    // statusbar: false,
-    // browser_spellcheck: true,
+    mobile: {
+      theme: 'silver',
+      plugins: ['autosave', 'lists', 'autolink']
+    },
     plugins: `link lists image code table colorpicker fullscreen fullpage help
     textcolor wordcount contextmenu codesample importcss media preview print
-    textpattern tabfocus hr directionality imagetools autosave paste`,
+    textpattern tabfocus hr directionality imagetools autosave`,
     language_url: '../../../assets/tinymce/langs/zh_CN.js',
     language: 'zh_CN',
     toolbar: 'codesample | bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft'
       + ' aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo '
-      + '| link unlink image code | removeformat | h2 h4 | fullscreen preview paste',
+      + '| link unlink image code | removeformat | h2 h4 | fullscreen preview styleselect ',
     height: 700,
     codesample_languages: [
       { text: 'JavaScript', value: 'javascript' },
@@ -86,7 +86,7 @@ export class EditComponent implements OnInit, AfterViewInit, OnDestroy {
       xhr = new XMLHttpRequest();
       xhr.withCredentials = false;
       xhr.open('POST', '/api/upload');
-      xhr.onload = function() {
+      xhr.onload = function () {
         let json;
         if (xhr.status !== 200) {
           failure('HTTP Error: ' + xhr.status);
@@ -127,8 +127,13 @@ export class EditComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   ngAfterViewInit() {
     this.storageInterval = setInterval(() => {
-      console.log('已缓存');
-      localStorage.setItem('articleDetail', JSON.stringify(this.editData));
+      console.log(localStorage.getItem('articleDetail'));
+      console.log(JSON.stringify(this.editData));
+      if (localStorage.getItem('articleDetail') !== JSON.stringify(this.editData)) {
+        console.log('已缓存');
+        localStorage.setItem('articleDetail', JSON.stringify(this.editData));
+
+      }
     }, 30000);
   }
   submitEdit() {

@@ -13,21 +13,13 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-registerLocaleData(en);
-import * as hljs from 'highlight.js';
-declare const require: any;
-import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
-// alternatively if you only need to include a subset of languages
-const hljs: any = require('highlight.js/lib/highlight');
-
-hljs.registerLanguage('typescript', require('highlight.js/lib/languages/typescript'));
-export function highlightJsFactory() {
-  return hljs;
-}
+import { TestFieldComponent } from './test-field/test-field.component';
+import { TinyMenuModule } from './components/tiny-menu/tiny-menu.module';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent],
+    LoginComponent,
+    TestFieldComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,14 +27,11 @@ export function highlightJsFactory() {
     DragDropModule,
     EditorModule,
     FormsModule,
+    TinyMenuModule,
     ReactiveFormsModule,
     BrowserModule.withServerTransition({ appId: 'my-app' }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    BrowserAnimationsModule,
-    HighlightJsModule.forRoot({
-      provide: HIGHLIGHT_JS,
-      useFactory: highlightJsFactory
-    })
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

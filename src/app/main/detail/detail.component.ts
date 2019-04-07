@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, SecurityContext } from '@angular/core';
+import { Component, OnInit, AfterViewInit, SecurityContext, AfterViewChecked } from '@angular/core';
 import { baseInfo } from '../database/baseInfo';
 import { HttpClient } from '@angular/common/http';
 import { Articel } from '../../data-model/article-model';
@@ -23,8 +23,13 @@ interface ArticleDetail {
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss', './default.css']
 })
-export class DetailComponent implements OnInit, AfterViewInit {
-  detail: ArticleDetail;
+export class DetailComponent implements OnInit, AfterViewChecked {
+  detail: ArticleDetail = {
+    title: '',
+    content: '',
+    author: '',
+    createTime: null
+  };
   constructor(private http: HttpClient, private route: ActivatedRoute,
     private router: Router, private sanitizer: DomSanitizer,
     private titleServe: Title) {
@@ -33,22 +38,17 @@ export class DetailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.http.post('/api/article/get',  {title: this.route.paramMap.source['value']['title']}).subscribe(res => {
+    this.http.post('/api/article/get', { title: this.route.paramMap.source['value']['title'] }).subscribe(res => {
       this.detail = res['data'][0];
-      this.sanitizer.sanitize(SecurityContext.HTML, 'detail.content');
+      // this.sanitizer.sanitize(SecurityContext.HTML, 'detail.content');
     });
   }
-  ngAfterViewInit(): void {
-    // this.el.nativeElement.querySelector('#code');
-    Prism.highlightAll();
-    // console.log(this.el.nativeElement.querySelector('.code'));
-    // Prism.highlightElement(this.el.nativeElement.querySelector('#code')[0]);
-  }
+  ngAfterViewChecked(): void { Prism.highlightAll(); }
   edit() {
     this.router.navigate(['/input/edit', this.detail.title]);
   }
   delete() {
-    this.http.post('/api/article/delete', { title: this.route.paramMap.source['value']['title']}).subscribe(res => {
+    this.http.post('/api/article/delete', { title: this.route.paramMap.source['value']['title'] }).subscribe(res => {
       if (res['success']) {
         this.router.navigate(['/main/list']);
       }

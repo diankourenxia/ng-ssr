@@ -32,6 +32,11 @@
             background: #8ec3ff;
             // box-shadow: -4px 3px 7px 1px #5d82ad;
         }
+        &:nth-child(4) {
+            top: 150px;
+            background: #8ec3ff;
+            // box-shadow: -4px 3px 7px 1px #5d82ad;
+        }
     }
     h1 {
         text-align: center;
@@ -53,6 +58,7 @@
         .form-container {
             width: 100%;
             height: 100px;
+            padding-top: 30px;
             input {
                 height: 40px;
                 width: 90%;
@@ -97,6 +103,9 @@
     overflow: hidden;
     overflow-y: scroll;
     height: 480px;
+    .done {
+        text-decoration-line: line-through;
+    }
 }
 
 .example-box {

@@ -9,7 +9,7 @@ import { DoorComponent } from './door/door.component';
 import { LayoutComponent } from '../components/layout/layout.component';
 import { CardListComponent } from '../components/card-list/card-list.component';
 import {PipeModule} from '../pipe/pipe.module';
-
+import {TinyMenuModule} from '../components/tiny-menu/tiny-menu.module';
 const mainRoutes: Routes = [
   {
     path: '', component: MainComponent, data: { title: 'door' },
@@ -32,6 +32,7 @@ const mainRoutes: Routes = [
   imports: [
     CommonModule,
     PipeModule,
+    TinyMenuModule,
     RouterModule.forChild(mainRoutes)
   ]
 })

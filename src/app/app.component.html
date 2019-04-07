@@ -7,16 +7,16 @@
     <div class="content-body">
         <ng-container *ngFor="let items of flashTypeList">
             <div class="content" [@activeContent]="items.contentPosition" *ngIf="items.contentPosition==='on'">
-                <h1>{{items.title}}</h1>
-                <div class="form-container">
+                <!-- <h1>{{items.title}}</h1> -->
+                <div class="form-container" *ngIf="items.type">
                     <form>
                         <input type='textarea' name='content' [(ngModel)]='flashData["content"]'>
                         <button type="submit" class="btn" (click)='onSubmit()'>Submit</button>
                     </form>
                 </div>
                 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-                    <div *ngFor="let item of items.list" class="example-box" cdkDrag>
-                        {{item.content}} <span class="delete-icon" (click)="deleteFlash(item)">X</span>
+                    <div *ngFor="let item of items.list" class="example-box" [ngClass]="{'done':item.status==='done'}">
+                        {{item.content}} <span class="delete-icon" (click)="deleteFlash(item)" *ngIf="item.status!=='done'">X</span>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { fromEvent, pipe } from 'rxjs';
+import { fromEvent, pipe, of } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { debounceTime } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
@@ -13,6 +13,7 @@ import {
   transition,
 } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
+import { forEach } from '@angular/router/src/utils/collection';
 interface FlashSchema {
   content: String;
   status?: String;
@@ -92,6 +93,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       contentPosition: 'next',
       type: 'blog',
       list: []
+    }, {
+      title: '完成',
+      isActive: false,
+      contentPosition: 'next',
+      type: null,
+      list: [],
+      status: 'done'
     }
   ];
   flashList = [];
@@ -138,8 +146,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     // console.log(calSize);
     // document.documentElement.style.fontSize = calSize > 60 ? '60px' : calSize + 'px';
   }
-  getFlashList(item, status = 'todo') {
-    this.http.post('/api/flash/list', { type: item.type, status: status }).subscribe((val) => {
+  getFlashList(item) {
+    this.http.post('/api/flash/list', { type: item.type, status: item.status || 'todo' }).subscribe((val) => {
       item.list = val['data'];
     });
   }
@@ -179,6 +187,5 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
   ngAfterViewInit() {
-    console.log(this.flashEl);
   }
 }
