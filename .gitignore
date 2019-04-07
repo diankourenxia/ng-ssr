@@ -45,3 +45,4 @@ Thumbs.db
 .history
 package-lock.json
 index.html
+dist
