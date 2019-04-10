@@ -303,4 +303,3 @@ Prism.languages.vim = { string: /"(?:[^"\\\r\n]|\\.)*"|'(?:[^'\r\n]|'')*'/, comm
     }
     else
         console.warn("Show Languages plugin loaded before Toolbar plugin."); }();
-//# sourceMappingURL=prism.js.map
