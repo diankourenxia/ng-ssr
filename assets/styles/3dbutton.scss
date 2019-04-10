@@ -1,0 +1,135 @@
+.button {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #ce9a2b;
+    text-align: center;
+    font-weight: bold;
+    // padding: 10px 40px;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0px 3px #7a5b19, 0px 4px #6d5117, 0px 5px #604814, 0px 6px #543f11, 0px 7px #47350f, 0px 8px #36280b, 0px 12px 6px -1px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.7), inset 0 0 3px rgba(252, 252, 252, 0.6);
+    -webkit-box-shadow: 0px 3px #7a5b19, 0px 4px #6d5117, 0px 5px #604814, 0px 6px #543f11, 0px 7px #47350f, 0px 8px #36280b, 0px 12px 6px -1px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.7), inset 0 0 3px rgba(252, 252, 252, 0.6);
+    box-shadow: 0px 3px #7a5b19, 0px 4px #6d5117, 0px 5px #604814, 0px 6px #543f11, 0px 7px #47350f, 0px 8px #36280b, 0px 12px 6px -1px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.7), inset 0 0 3px rgba(252, 252, 252, 0.6);
+    border: solid 1px #7a5b19;
+    background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.14), rgba(255, 255, 255, 0.14));
+    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.14), rgba(255, 255, 255, 0.14));
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.14), rgba(255, 255, 255, 0.14));
+    -moz-transition: -moz-transform 100ms, box-shadow 100ms, background-color 200ms, color 200ms;
+    -o-transition: -o-transform 100ms, box-shadow 100ms, background-color 200ms, color 200ms;
+    -webkit-transition: -webkit-transform 100ms, box-shadow 100ms, background-color 200ms, color 200ms;
+    transition: transform 100ms, box-shadow 100ms, background-color 200ms, color 200ms;
+}
+
+.button:hover {
+    background-color: #a47a22;
+}
+
+.button:active {
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+    -moz-box-shadow: 0px 3px #7a5b19, 0px 1px #47350f, 0px 5px 2px 0px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.7), inset 0 0 3px rgba(252, 252, 252, 0.6);
+    -webkit-box-shadow: 0px 3px #7a5b19, 0px 1px #47350f, 0px 5px 2px 0px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.7), inset 0 0 3px rgba(252, 252, 252, 0.6);
+    box-shadow: 0px 3px #7a5b19, 0px 1px #47350f, 0px 5px 2px 0px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.7), inset 0 0 3px rgba(252, 252, 252, 0.6);
+}
+
+$prefix-for-webkit: true !default;
+$prefix-for-mozilla: true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera: true !default;
+$prefix-for-spec: true !default; // 标准版
+// prefixer
+//----------------------------
+@mixin prefixer ($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+        @if $prefix==webkit and $prefix-for-webkit==true {
+            -webkit-#{$property}: $value;
+        }
+        @else if $prefix==moz and $prefix-for-mozilla==true {
+            -moz-#{$property}: $value;
+        }
+        @else if $prefix==ms and $prefix-for-microsoft==true {
+            -ms-#{$property}: $value;
+        }
+        @else if $prefix==o and $prefix-for-opera==true {
+            -o-#{$property}: $value;
+        }
+        @else if $prefix==spec and $prefix-for-spec==true {
+            #{$property}: $value;
+        }
+        @else {
+            @warn "Unrecognized prefix: #{$prefix}";
+        }
+    }
+}
+
+$defaultColor: #ce9a2b;
+//webki和标准
+@mixin box-shadow($shadow...) {
+    @include prefixer(box-shadow, $shadow, webkit spec);
+}
+
+//webkit moz 和标准
+@mixin box-sizing($type:border-box) {
+    // border-box | padding-box | content-box
+    @include prefixer(box-sizing, $type, webkit moz spec);
+}
+
+//webkit moz o 和标准
+@mixin transform($property...) {
+    @include prefixer(transform, $property, webkit moz o spec);
+}
+
+//webkit moz o 和标准
+@mixin transition($transition...) {
+    @include prefixer(transition, $transition, webkit moz o spec);
+}
+
+@mixin background-image($background...) {
+    @include prefixer(background, $background, webkit moz o spec);
+}
+
+@mixin button($color: $defaultColor) {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: $color;
+    text-align: center;
+    font-weight: bold;
+    // padding: 10px 40px;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 1px 1px rgba( #000, 0.4);
+    @include box-shadow(0px 3px rgba(darken($color, 20%), 1), /* gradient effects */
+    0px 4px rgba(darken($color, 23%), 1), 0px 5px rgba(darken($color, 26%), 1), 0px 6px rgba(darken($color, 29%), 1), 0px 7px rgba(darken($color, 32%), 1), 0px 8px rgba(darken($color, 36%), 1), 0px 12px 6px -1px rgba(0, 0, 0, .5), //inner glow & drop shadow
+    inset 0 1px 1px rgba(255, 255, 255, .7), inset 0 0 3px rgba(252, 252, 252, .6));
+    border: solid 1px darken($color, 20%);
+    @include background-image(linear-gradient(to top, rgba(0, 0, 0, .14), rgba(255, 255, 255, .14)));
+    @include transition(transform 100ms, box-shadow 100ms, background-color 200ms, color 200ms);
+    &:hover {
+        background-color: darken($color, 10%);
+    }
+    &:active {
+        @include transform(translateY(5px));
+        @include box-shadow(0px 3px rgba(darken($color, 20%), 1), /* gradient effects */
+        0px 1px rgba(darken($color, 32%), 1), 0px 5px 2px 0px rgba(0, 0, 0, .4), //inner glow & drop shadow
+        inset 0 1px 1px rgba(255, 255, 255, .7), inset 0 0 3px rgba(252, 252, 252, .6));
+    }
+}
+
+.button {
+    @include button;
+    &.two {
+        @include button(#292b29);
+    }
+    &.three {
+        @include button(#bfbaa9);
+    }
+    &.four {
+        @include button(#005780);
+    }
+    &:disabled {
+        color: black;
+    }
+}
